@@ -17,6 +17,15 @@ FIELDS = ['user_time', 'system_time', 'pkg_idle_wkups', 'interrupt_wkups', 'page
 class Usage(C.Structure):
     _fields_ = [('uuid', C.c_uint8 * 16)] + [(key, C.c_uint64) for key in FIELDS]
 
+class Timebase(C.Structure):
+    _fields_ = [('numer', C.c_uint32), ('denom', C.c_uint32)]
+
+TIMEBASE = Timebase()
+SYSTEM = C.CDLL('/usr/lib/libSystem.B.dylib')
+if SYSTEM.mach_timebase_info(C.byref(TIMEBASE)) != 0 or not TIMEBASE.denom:
+    raise RuntimeError('Cannot read Mach timebase')
+SECONDS_PER_TICK = TIMEBASE.numer / TIMEBASE.denom / 1e9
+
 LIB = C.CDLL('/usr/lib/libproc.dylib', use_errno=True)
 LIB.proc_pid_rusage.argtypes = [C.c_int, C.c_int, C.c_void_p]
 LIB.proc_pidpath.argtypes = [C.c_int, C.c_void_p, C.c_uint32]
@@ -41,8 +50,8 @@ def sample(pid, name, elapsed):
     if LIB.proc_pid_rusage(pid, 2, C.byref(u)) != 0:
         return None
     return {'t': elapsed, 'pid': pid, 'name': name, 'start': u.proc_start_abstime,
-            'cpuSeconds': (u.user_time + u.system_time) / 1e9,
-            'childCpuSeconds': (u.child_user_time + u.child_system_time) / 1e9,
+            'cpuSeconds': (u.user_time + u.system_time) * SECONDS_PER_TICK,
+            'childCpuSeconds': (u.child_user_time + u.child_system_time) * SECONDS_PER_TICK,
             'rssMiB': u.resident_size / 1048576, 'footprintMiB': u.phys_footprint / 1048576,
             'idleWakeups': u.pkg_idle_wkups, 'interruptWakeups': u.interrupt_wkups}
 
@@ -84,7 +93,8 @@ def main():
               'version': info.get('CFBundleShortVersionString'), 'build': info.get('CFBundleVersion'),
               'configuration': info.get('ToklyBuildConfiguration'), 'gitCommit': info.get('ToklyGitCommit'),
               'platform': platform.platform(), 'intervalSeconds': args.interval,
-              'method': 'macOS proc_pid_rusage RUSAGE_INFO_V2; 100% CPU = one logical core',
+              'method': 'macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core',
+              'machTimebase': {'numer': TIMEBASE.numer, 'denom': TIMEBASE.denom},
               'limitations': 'Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.'}
     start = time.monotonic(); rows = []; known = {}; next_discovery = 0
     while True:
