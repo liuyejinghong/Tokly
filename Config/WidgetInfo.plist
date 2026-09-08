@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>14.0</string>
 	<key>NSExtension</key>
@@ -29,5 +29,9 @@
 	</dict>
 	<key>TokensAppGroupIdentifier</key>
 	<string>$(TOKENS_APP_GROUP)</string>
+	<key>ToklyBuildConfiguration</key>
+	<string>$(CONFIGURATION)</string>
+	<key>ToklyGitCommit</key>
+	<string>$(TOKLY_GIT_COMMIT)</string>
 </dict>
 </plist>

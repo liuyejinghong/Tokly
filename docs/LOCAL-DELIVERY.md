@@ -29,7 +29,7 @@
 
 ## 重建
 
-运行 `bash scripts/check-collector.sh` 构建helper。复制 `Config/Local.xcconfig.example` 为已忽略的 `Config/Local.xcconfig`，填本机团队，再运行 `bash scripts/build-local.sh`。签名产物位于 `.build/TokensSigned/Build/Products/Debug/Tokly.app`。脚本使用现有开发身份，不自动申请新证书或公开发布。
+运行 `bash scripts/check-collector.sh` 构建helper。复制 `Config/Local.xcconfig.example` 为已忽略的 `Config/Local.xcconfig`，填本机团队，再运行 `bash scripts/build-local.sh`。签名产物位于 `.build/TokensSigned/Build/Products/Release/Tokly.app`。脚本使用现有开发身份，不自动申请新证书或公开发布。
 
 ## 菜单栏修复
 

@@ -169,11 +169,11 @@ bash scripts/build-local.sh
 
 已有 `Local.xcconfig` 时不要覆盖它。签名配置、证书和钥匙串不从仓库恢复，也不应提交。主应用与扩展必须解析到同一个实际 App Group；helper 通过 `CodeSignOnCopy` 使用开发签名。
 
-签名产物：`.build/TokensSigned/Build/Products/Debug/Tokly.app`。安装前先验证：
+签名产物：`.build/TokensSigned/Build/Products/Release/Tokly.app`。安装前先验证：
 
 ```sh
 codesign --verify --deep --strict \
-  .build/TokensSigned/Build/Products/Debug/Tokly.app
+  .build/TokensSigned/Build/Products/Release/Tokly.app
 ```
 
 `build-local.sh` 只构建，不安装、不购买、不公证，也不自动申请新证书。安装或更新时先正常退出旧进程，确认目标属于本应用，再复制签名包；不能覆盖其他同名应用。原开发机器的安装位置是 `~/Applications/Tokly.app`，其他机器不必沿用该位置。
@@ -263,3 +263,9 @@ mkdir -p "$demo_dir/home" "$demo_dir/config"
 - [docs/PRODUCT-PROTOTYPE.md](docs/PRODUCT-PROTOTYPE.md)、[docs/prototype/](docs/prototype/)：批准的原型基线；后续菜单栏增强见本 README。
 - [validation/README.md](validation/README.md)、[docs/VALIDATION.md](docs/VALIDATION.md)：早期性能实验和方法；其中原机器临时语料不在仓库内。
 - [docs/OPENCODE-WORKER-COMPLETION-HANDOFF.md](docs/OPENCODE-WORKER-COMPLETION-HANDOFF.md)：Worker 完成通知问题的历史分析，不是当前宿主能力保证。
+
+## 9. 版本与当前性能基线
+
+版本遵循x.y.z：大版本/新增功能/优化修复。应用及扩展从Config/Version.xcconfig读取版本和构建号，Collector版本同步；具体流程见 [VERSIONING.md](docs/VERSIONING.md)，每版变化见 [CHANGELOG.md](CHANGELOG.md)。检查命令为 `python3 scripts/version.py check`，递增工具不会自动发布。
+
+签名脚本默认Release，诊断时可传Debug；安装包记录构建配置和源码提交。不要用历史Debug或早期collector-probe的资源测量代表新的Release。`scripts/profile-runtime.py`支持对指定已运行app bundle做只读CPU时间、RSS和physical footprint采样；不读取会话正文、不自动触发采集，结果默认由调用者指定位置保存。

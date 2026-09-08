@@ -296,6 +296,7 @@
 				<string>W00000000000000000000007</string>
 				<string>T000000000000000000000006</string>
 				<string>B73A2E02B6E64B22B83E6C1A</string>
+				<string>4BD2C47182284ED4904FD742</string>
 			</array>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
@@ -893,6 +894,8 @@
 			</dict>
 			<key>name</key>
 			<string>Debug</string>
+			<key>baseConfigurationReference</key>
+			<string>4BD2C47182284ED4904FD742</string>
 		</dict>
 		<key>CCCCCCCCCCCCCCCCCCCCCCCD</key>
 		<dict>
@@ -919,6 +922,8 @@
 			</dict>
 			<key>name</key>
 			<string>Release</string>
+			<key>baseConfigurationReference</key>
+			<string>4BD2C47182284ED4904FD742</string>
 		</dict>
 		<key>DDDDDDDDDDDDDDDDDDDDDDDD</key>
 		<dict>
@@ -952,6 +957,8 @@
 			</dict>
 			<key>name</key>
 			<string>Debug</string>
+			<key>baseConfigurationReference</key>
+			<string>4BD2C47182284ED4904FD742</string>
 		</dict>
 		<key>DDDDDDDDDDDDDDDDDDDDDDDE</key>
 		<dict>
@@ -985,6 +992,8 @@
 			</dict>
 			<key>name</key>
 			<string>Release</string>
+			<key>baseConfigurationReference</key>
+			<string>4BD2C47182284ED4904FD742</string>
 		</dict>
 		<key>WBBBBBBBBBBBBBBBBBBBBBB</key>
 		<dict>
@@ -1033,6 +1042,8 @@
 			</dict>
 			<key>name</key>
 			<string>Debug</string>
+			<key>baseConfigurationReference</key>
+			<string>4BD2C47182284ED4904FD742</string>
 		</dict>
 		<key>WDDDDDDDDDDDDDDDDDDDDDE</key>
 		<dict>
@@ -1067,6 +1078,8 @@
 			</dict>
 			<key>name</key>
 			<string>Release</string>
+			<key>baseConfigurationReference</key>
+			<string>4BD2C47182284ED4904FD742</string>
 		</dict>
 		<key>B73A2E02B6E64B22B83E6C1A</key>
 		<dict>
@@ -1087,6 +1100,17 @@
 			<string>PBXBuildFile</string>
 			<key>fileRef</key>
 			<string>B73A2E02B6E64B22B83E6C1A</string>
+		</dict>
+		<key>4BD2C47182284ED4904FD742</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Config/Version.xcconfig</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>
