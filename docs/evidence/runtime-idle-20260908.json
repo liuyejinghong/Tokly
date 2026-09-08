@@ -1,0 +1,58 @@
+{
+  "kind": "short passive process sampling",
+  "appVersion": "0.1",
+  "build": "1",
+  "buildConfiguration": "Debug",
+  "durationSeconds": 31,
+  "samples": [
+    {
+      "at": "2026-09-08T20:36:18+0800",
+      "processes": [
+        {
+          "name": "Tokly",
+          "rssMiB": 130.6,
+          "cpuPercent": 0.0,
+          "cumulativeCpuTime": "0:09.79"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-08T20:36:28+0800",
+      "processes": [
+        {
+          "name": "Tokly",
+          "rssMiB": 130.6,
+          "cpuPercent": 0.0,
+          "cumulativeCpuTime": "0:09.79"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-08T20:36:39+0800",
+      "processes": [
+        {
+          "name": "Tokly",
+          "rssMiB": 130.6,
+          "cpuPercent": 0.0,
+          "cumulativeCpuTime": "0:09.80"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-08T20:36:49+0800",
+      "processes": [
+        {
+          "name": "Tokly",
+          "rssMiB": 130.6,
+          "cpuPercent": 0.0,
+          "cumulativeCpuTime": "0:09.80"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No scan or standalone Widget process captured during this window",
+    "RSS is not macOS physical footprint",
+    "Not a sustained workload, wakeups, energy or battery measurement"
+  ]
+}

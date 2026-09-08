@@ -1,0 +1,33 @@
+{
+  "phase": "warm-helper-peak",
+  "recordedAt": "2026-09-08T20:59:07+0800",
+  "version": "0.1.0",
+  "build": "2",
+  "configuration": "Release",
+  "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "intervalSeconds": 0.1,
+  "method": "macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core",
+  "machTimebase": {
+    "numer": 125,
+    "denom": 3
+  },
+  "limitations": "Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.",
+  "elapsedSeconds": 15.000558333005756,
+  "summary": [
+    {
+      "name": "tokens-collector",
+      "pid": 9834,
+      "samples": 49,
+      "observedSeconds": 4.985012541059405,
+      "cpuSeconds": 6.5164504999999995,
+      "averageCpuPercentOneCore": 130.72084465839953,
+      "peakSampleCpuPercentOneCore": 491.3796893728725,
+      "rssMiBMin": 11.375,
+      "rssMiBMax": 840.96875,
+      "footprintMiBMedian": 242.98531341552734,
+      "footprintMiBMax": 835.1260528564453,
+      "childCpuSeconds": 0.0
+    }
+  ]
+}

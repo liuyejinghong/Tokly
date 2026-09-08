@@ -269,3 +269,5 @@ mkdir -p "$demo_dir/home" "$demo_dir/config"
 版本遵循x.y.z：大版本/新增功能/优化修复。应用及扩展从Config/Version.xcconfig读取版本和构建号，Collector版本同步；具体流程见 [VERSIONING.md](docs/VERSIONING.md)，每版变化见 [CHANGELOG.md](CHANGELOG.md)。检查命令为 `python3 scripts/version.py check`，递增工具不会自动发布。
 
 签名脚本默认Release，诊断时可传Debug；安装包记录构建配置和源码提交。不要用历史Debug或早期collector-probe的资源测量代表新的Release。`scripts/profile-runtime.py`支持对指定已运行app bundle做只读CPU时间、RSS和physical footprint采样；不读取会话正文、不自动触发采集，结果默认由调用者指定位置保存。
+
+当前版本评估见 [PERFORMANCE-0.1.0.md](docs/PERFORMANCE-0.1.0.md)：最新Release采集器已测，主应用Release完整资源评估仍待切换后补齐。不要把该报告理解为完整性能验收通过。

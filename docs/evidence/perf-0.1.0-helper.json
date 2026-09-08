@@ -1,0 +1,64 @@
+{
+  "version": "0.1.0",
+  "build": 2,
+  "configuration": "Release",
+  "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+  "helperSha256": "b5af053463ad74c4220d0ac59440f23eb3adf410ba5935e1d3c0200f0b61dadd",
+  "method": "Current signed helper, selected sources and live home, isolated copied warm cache; no thread overrides. /usr/bin/time -l. Cold means empty message cache, not cold OS file cache. Other client apps may append records during runs.",
+  "clients": [
+    "claude",
+    "codex",
+    "cursor",
+    "gemini",
+    "grok",
+    "opencode",
+    "trae",
+    "zcode"
+  ],
+  "results": [
+    {
+      "case": "warm-1",
+      "exit": 0,
+      "wallSeconds": 5.050559000112116,
+      "userSeconds": 5.84,
+      "systemSeconds": 0.97,
+      "maxRssMiB": 846.421875,
+      "peakFootprintMiB": 840.5948257446289,
+      "sourceCount": 4822,
+      "dailyBuckets": 8
+    },
+    {
+      "case": "warm-2",
+      "exit": 0,
+      "wallSeconds": 4.562175082974136,
+      "userSeconds": 6.32,
+      "systemSeconds": 0.62,
+      "maxRssMiB": 840.671875,
+      "peakFootprintMiB": 834.9229507446289,
+      "sourceCount": 4822,
+      "dailyBuckets": 8
+    },
+    {
+      "case": "warm-3",
+      "exit": 0,
+      "wallSeconds": 4.580439624842256,
+      "userSeconds": 6.21,
+      "systemSeconds": 0.68,
+      "maxRssMiB": 841.015625,
+      "peakFootprintMiB": 835.2823486328125,
+      "sourceCount": 4822,
+      "dailyBuckets": 8
+    },
+    {
+      "case": "cold-message-cache",
+      "exit": 0,
+      "wallSeconds": 27.989236999768764,
+      "userSeconds": 120.87,
+      "systemSeconds": 13.23,
+      "maxRssMiB": 2487.921875,
+      "peakFootprintMiB": 2777.924415588379,
+      "sourceCount": 4822,
+      "dailyBuckets": 8
+    }
+  ]
+}
