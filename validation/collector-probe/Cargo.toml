@@ -1,0 +1,9 @@
+[package]
+name = "tokens-macos-collector-probe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokens-core = { path = "../../Collector/vendor/tokens-core" }
+serde_json = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }

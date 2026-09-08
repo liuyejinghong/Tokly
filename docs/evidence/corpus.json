@@ -1,0 +1,17 @@
+[
+  {
+    "client": "codex",
+    "files": 3315,
+    "bytes": 21472667830
+  },
+  {
+    "client": "claude",
+    "files": 1340,
+    "bytes": 301216888
+  },
+  {
+    "client": "opencode",
+    "files": 1,
+    "bytes": 4816748544
+  }
+]

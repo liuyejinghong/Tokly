@@ -1,0 +1,14 @@
+[
+  {
+    "label": "today-shared-cache-0",
+    "wallSeconds": 0.7775618750602007,
+    "userSeconds": 0.51,
+    "systemSeconds": 0.11,
+    "peakRssBytes": 360218624,
+    "coreElapsedMs": 758,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 10697525450,
+    "cycles": 2274123132
+  }
+]

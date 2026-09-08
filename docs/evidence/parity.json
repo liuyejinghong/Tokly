@@ -1,0 +1,11 @@
+{
+  "fixedSnapshotFullColdWarmEqual": true,
+  "todayMatchesFullDay": true,
+  "date": "2026-09-08",
+  "parsedClients": [
+    "claude",
+    "codex",
+    "opencode"
+  ],
+  "pricingSha256": "f68d88c12610ea31ab355a1293fde55aeed6fa78a1f4b182c67be47d80b1d202"
+}

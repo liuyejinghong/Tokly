@@ -1,0 +1,51 @@
+{
+  "observations": [
+    {
+      "scheduledSeconds": 0,
+      "actualStartSeconds": 1.000240445137024e-06,
+      "utc": "2026-09-08T04:28:55.162807+00:00",
+      "label": "cadence-0-0",
+      "wallSeconds": 2.125267833005637,
+      "userSeconds": 1.99,
+      "systemSeconds": 0.61,
+      "peakRssBytes": 855392256,
+      "coreElapsedMs": 2091,
+      "blockInputs": 0,
+      "blockOutputs": 0,
+      "instructions": 33273258796,
+      "cycles": 9233202506
+    },
+    {
+      "scheduledSeconds": 300,
+      "actualStartSeconds": 300.006992792245,
+      "utc": "2026-09-08T04:33:55.224992+00:00",
+      "label": "cadence-300-0",
+      "wallSeconds": 2.1656371667049825,
+      "userSeconds": 2.06,
+      "systemSeconds": 0.62,
+      "peakRssBytes": 856670208,
+      "coreElapsedMs": 2138,
+      "blockInputs": 0,
+      "blockOutputs": 0,
+      "instructions": 33451928090,
+      "cycles": 9530305239
+    },
+    {
+      "scheduledSeconds": 600,
+      "actualStartSeconds": 600.0014581670985,
+      "utc": "2026-09-08T04:38:55.055484+00:00",
+      "label": "cadence-600-0",
+      "wallSeconds": 2.0181653751060367,
+      "userSeconds": 1.98,
+      "systemSeconds": 0.58,
+      "peakRssBytes": 851804160,
+      "coreElapsedMs": 1989,
+      "blockInputs": 0,
+      "blockOutputs": 0,
+      "instructions": 33255467157,
+      "cycles": 9154350487
+    }
+  ],
+  "syntheticAddedTokens": 160,
+  "unchangedAtTenMinutes": true
+}

@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-09-08",
+  "xcode": "26.6 (17F113)",
+  "signedBuild": true,
+  "signatureVerified": true,
+  "installed": "/Users/ethan/Applications/TokensPrep.app",
+  "widgetSizes": [
+    "systemSmall",
+    "systemMedium"
+  ],
+  "syntheticTokens": 800,
+  "revision": 5,
+  "actualBackgroundWrite": true,
+  "writerWasActive": false,
+  "bothDesktopWidgetsUpdated": true,
+  "retainedAfterAppQuit": true,
+  "appLeftRunning": false,
+  "strictLatencyMeasured": false,
+  "realUsageConnected": false,
+  "sourceHashes": {
+    "validation/WidgetSmoke/TokensPrep.xcodeproj/project.pbxproj": "b5f340eac72188cc5e4fcfa1dfcfe25064688bf0a3cc28ad3d9a13bf23008b28",
+    "validation/WidgetSmoke/Config/Local.xcconfig.example": "1eb404a85eeb1ec965967cf8c80a11b9b5fbb1b9350a27a2c58b0647e6a0b88d",
+    "validation/WidgetSmoke/Config/App.entitlements": "2771b2521e8426d818226747bd71c0ce5d552a54535d979e389f756f91dcda05",
+    "validation/WidgetSmoke/Config/Widget.entitlements": "2771b2521e8426d818226747bd71c0ce5d552a54535d979e389f756f91dcda05",
+    "validation/WidgetSmoke/Config/AppInfo.plist": "728a4346115a8082aeea332a0eeb548747f9b2b196292faacf5c6514dbfc72d3",
+    "validation/WidgetSmoke/Config/WidgetInfo.plist": "3124709793e683028d9272c0b609c0a7c6a7a3884e54f3123628082b721cd61b",
+    "validation/WidgetSmoke/Tests/Checks.swift": "c3bbed32f8ba78eff75f7b65e6ef5fc1c965dec718105478ede05189633283ed",
+    "validation/WidgetSmoke/Sources/PrepWidget.swift": "9e42f701fb435eb168d08a04a678d2d29da4b935234f96a2a024e45695ea926d",
+    "validation/WidgetSmoke/Sources/PrepApp.swift": "a58960e26afb1f372c2c8a36e8ffd539419beff4289e6215c508278ae5ed74ee",
+    "validation/WidgetSmoke/Sources/Shared.swift": "0312833c4c1b54e27c8cc034b5b5692465f16382a740c71d4dff815e302361d8",
+    "validation/WidgetSmoke/TokensPrep.xcodeproj/xcshareddata/xcschemes/TokensPrep.xcscheme": "ca27bd3cadbb8933f6fb45917fdaaac7eee0aab4fb047ab45a0438b5ed5d568a"
+  }
+}

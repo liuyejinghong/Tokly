@@ -1,0 +1,50 @@
+[
+  {
+    "label": "full-0",
+    "wallSeconds": 33.5430055828765,
+    "userSeconds": 90.0,
+    "systemSeconds": 10.44,
+    "peakRssBytes": 2114813952,
+    "coreElapsedMs": 33515,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 1267128340287,
+    "cycles": 352066927649
+  },
+  {
+    "label": "full-1",
+    "wallSeconds": 1.9220801661722362,
+    "userSeconds": 2.02,
+    "systemSeconds": 0.54,
+    "peakRssBytes": 856293376,
+    "coreElapsedMs": 1897,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 33120540468,
+    "cycles": 9110955150
+  },
+  {
+    "label": "full-2",
+    "wallSeconds": 1.2995914998464286,
+    "userSeconds": 2.16,
+    "systemSeconds": 0.42,
+    "peakRssBytes": 849821696,
+    "coreElapsedMs": 1274,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 32001534179,
+    "cycles": 9102317329
+  },
+  {
+    "label": "full-3",
+    "wallSeconds": 1.2850766670890152,
+    "userSeconds": 2.15,
+    "systemSeconds": 0.41,
+    "peakRssBytes": 856358912,
+    "coreElapsedMs": 1254,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 31898362624,
+    "cycles": 8985609245
+  }
+]

@@ -1,0 +1,3 @@
+// Copy to Local.xcconfig and set the Team ID shown by Xcode.
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+PREP_APP_GROUP = $(DEVELOPMENT_TEAM).tokensmacos.preflight

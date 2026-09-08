@@ -1,0 +1,9 @@
+{
+  "coldWarmExpectedTokens": 160,
+  "appendExpectedTokens": 320,
+  "archiveDuplicateCountedOnce": true,
+  "todayNormalMatchesFull": true,
+  "oldMtimeFullTokens": 320,
+  "oldMtimeTodayTokens": 0,
+  "mtimeShortcutEquivalent": false
+}

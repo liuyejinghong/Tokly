@@ -1,0 +1,50 @@
+[
+  {
+    "label": "today-0",
+    "wallSeconds": 1.75417554192245,
+    "userSeconds": 0.49,
+    "systemSeconds": 0.25,
+    "peakRssBytes": 198230016,
+    "coreElapsedMs": 1741,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 8780400283,
+    "cycles": 2686900503
+  },
+  {
+    "label": "today-1",
+    "wallSeconds": 0.12596149975433946,
+    "userSeconds": 0.1,
+    "systemSeconds": 0.03,
+    "peakRssBytes": 82722816,
+    "coreElapsedMs": 116,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 2009943608,
+    "cycles": 486534482
+  },
+  {
+    "label": "today-2",
+    "wallSeconds": 0.12729445798322558,
+    "userSeconds": 0.1,
+    "systemSeconds": 0.03,
+    "peakRssBytes": 82493440,
+    "coreElapsedMs": 118,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 2017049438,
+    "cycles": 495749720
+  },
+  {
+    "label": "today-3",
+    "wallSeconds": 0.12849916703999043,
+    "userSeconds": 0.1,
+    "systemSeconds": 0.03,
+    "peakRssBytes": 82608128,
+    "coreElapsedMs": 119,
+    "blockInputs": 0,
+    "blockOutputs": 0,
+    "instructions": 2019592048,
+    "cycles": 496057628
+  }
+]

@@ -1,0 +1,9 @@
+.DS_Store
+.codegraph
+.omo/
+validation/collector-probe/target/
+
+__pycache__/
+validation/WidgetSmoke/Config/Local.xcconfig
+validation/WidgetSmoke/DerivedData/
+**/xcuserdata/
