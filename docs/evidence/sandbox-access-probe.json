@@ -1,0 +1,19 @@
+{
+  "parentSandboxEnabled": true,
+  "userSelectedReadOnly": true,
+  "persistentSecurityScopedBookmarks": true,
+  "helperSandboxInherit": true,
+  "ungrantedDirectoryDenied": true,
+  "syntheticClients": [
+    "codex",
+    "claude",
+    "opencode"
+  ],
+  "unsandboxedBaselineTokens": 280,
+  "sandboxedTokens": 280,
+  "afterAppExitAndRelaunchTokens": 280,
+  "openCodeLiveWalBaselineTokens": 380,
+  "openCodeLiveWalSandboxTokens": 380,
+  "productionAppChanged": false,
+  "storeApprovalClaimed": false
+}

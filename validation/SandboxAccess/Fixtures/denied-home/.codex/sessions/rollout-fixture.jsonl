@@ -1,0 +1,2 @@
+{"timestamp": "2026-09-08T08:00:00+08:00", "type": "session_meta", "payload": {"id": "sandbox-codex-fixture", "model_provider": "openai"}}
+{"timestamp": "2026-09-08T08:00:00+08:00", "type": "event_msg", "payload": {"type": "token_count", "info": {"model": "fixture-model", "last_token_usage": {"input_tokens": 100, "output_tokens": 50, "cached_input_tokens": 20, "reasoning_output_tokens": 10, "total_tokens": 150}, "total_token_usage": {"input_tokens": 100, "output_tokens": 50, "cached_input_tokens": 20, "reasoning_output_tokens": 10, "total_tokens": 150}}}}
