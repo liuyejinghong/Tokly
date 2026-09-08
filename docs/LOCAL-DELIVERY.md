@@ -30,3 +30,7 @@
 ## 重建
 
 运行 `bash scripts/check-collector.sh` 构建helper。复制 `Config/Local.xcconfig.example` 为已忽略的 `Config/Local.xcconfig`，填本机团队，再运行 `bash scripts/build-local.sh`。签名产物位于 `.build/TokensSigned/Build/Products/Debug/Tokens.app`。脚本使用现有开发身份，不自动申请新证书或公开发布。
+
+## 菜单栏修复
+
+用户截图显示自定义布局被系统菜单模式拆成竖排、灰色菜单项。已将MenuBarExtra设为window模式，并显式保留图标和今日指标文字；客户端分项不再继承主窗口筛选。主窗口布局未变。96项检查、构建及签名验证通过，修复包已更新安装；当前桌面控制连接断开，需重启Tokens后复核实际弹窗，尚未记为视觉验收通过。

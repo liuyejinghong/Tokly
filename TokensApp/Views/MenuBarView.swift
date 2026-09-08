@@ -56,7 +56,7 @@ struct MenuBarView: View {
     }
 
     private func clientRows() -> [(String, Int64)] {
-        guard let snap = state.filteredSnapshot(),
+        guard state.displayValid, let snap = state.snapshot,
               let bucket = snap.daily.first(where: { $0.date == state.todayString }) else { return [] }
         return bucket.clients
             .map { ($0.clientId, Aggregation.aggregateClient($0).tokens.total) }

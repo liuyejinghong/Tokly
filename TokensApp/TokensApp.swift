@@ -16,10 +16,14 @@ struct TokensApp: App {
         }
         .defaultSize(width: 980, height: 640)
 
-        MenuBarExtra(state.todayMenuTitle(), systemImage: "chart.bar") {
+        MenuBarExtra {
             MenuBarView()
                 .environmentObject(state)
+        } label: {
+            Label(state.todayMenuTitle(), systemImage: "chart.bar")
+                .labelStyle(.titleAndIcon)
         }
+        .menuBarExtraStyle(.window)
     }
 }
 
