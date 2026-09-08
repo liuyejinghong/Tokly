@@ -1,0 +1,194 @@
+{
+  "startup-settle": {
+    "phase": "startup-settle",
+    "recordedAt": "2026-09-08T21:07:49+0800",
+    "version": "0.1.0",
+    "build": "2",
+    "configuration": "Release",
+    "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "intervalSeconds": 0.25,
+    "method": "macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core",
+    "machTimebase": {
+      "numer": 125,
+      "denom": 3
+    },
+    "limitations": "Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.",
+    "elapsedSeconds": 30.00331970769912,
+    "summary": [
+      {
+        "name": "Tokly",
+        "pid": 12175,
+        "samples": 119,
+        "observedSeconds": 30.003238915931433,
+        "cpuSeconds": 0.006184291666666675,
+        "averageCpuPercentOneCore": 0.02061208019572472,
+        "peakSampleCpuPercentOneCore": 0.43173598520801343,
+        "rssMiBMin": 135.03125,
+        "rssMiBMax": 135.0625,
+        "footprintMiBMedian": 58.985313415527344,
+        "footprintMiBMax": 58.985313415527344,
+        "childCpuSeconds": 0.0
+      }
+    ]
+  },
+  "background-idle": {
+    "phase": "background-idle",
+    "recordedAt": "2026-09-08T21:09:53+0800",
+    "version": "0.1.0",
+    "build": "2",
+    "configuration": "Release",
+    "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "intervalSeconds": 0.25,
+    "method": "macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core",
+    "machTimebase": {
+      "numer": 125,
+      "denom": 3
+    },
+    "limitations": "Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.",
+    "elapsedSeconds": 60.000185874756426,
+    "summary": [
+      {
+        "name": "Tokly",
+        "pid": 12175,
+        "samples": 236,
+        "observedSeconds": 60.00011650007218,
+        "cpuSeconds": 0.00949070833333332,
+        "averageCpuPercentOneCore": 0.015817816509276116,
+        "peakSampleCpuPercentOneCore": 0.46399725092050254,
+        "rssMiBMin": 144.453125,
+        "rssMiBMax": 144.453125,
+        "footprintMiBMedian": 62.688438415527344,
+        "footprintMiBMax": 62.688438415527344,
+        "childCpuSeconds": 0.0
+      }
+    ]
+  },
+  "ui-interaction": {
+    "phase": "ui-interaction",
+    "recordedAt": "2026-09-08T21:11:16+0800",
+    "version": "0.1.0",
+    "build": "2",
+    "configuration": "Release",
+    "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "intervalSeconds": 0.25,
+    "method": "macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core",
+    "machTimebase": {
+      "numer": 125,
+      "denom": 3
+    },
+    "limitations": "Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.",
+    "elapsedSeconds": 60.00142191722989,
+    "summary": [
+      {
+        "name": "Tokly",
+        "pid": 12175,
+        "samples": 236,
+        "observedSeconds": 60.001335999928415,
+        "cpuSeconds": 2.011910958333333,
+        "averageCpuPercentOneCore": 3.353110267970922,
+        "peakSampleCpuPercentOneCore": 99.53533087502679,
+        "rssMiBMin": 144.453125,
+        "rssMiBMax": 149.640625,
+        "footprintMiBMedian": 65.61031341552734,
+        "footprintMiBMax": 185.39156341552734,
+        "childCpuSeconds": 0.0
+      }
+    ]
+  },
+  "visible-ui-interaction": {
+    "phase": "visible-ui-interaction",
+    "recordedAt": "2026-09-08T21:13:36+0800",
+    "version": "0.1.0",
+    "build": "2",
+    "configuration": "Release",
+    "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "intervalSeconds": 0.25,
+    "method": "macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core",
+    "machTimebase": {
+      "numer": 125,
+      "denom": 3
+    },
+    "limitations": "Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.",
+    "elapsedSeconds": 45.01280058408156,
+    "summary": [
+      {
+        "name": "Tokly",
+        "pid": 12175,
+        "samples": 178,
+        "observedSeconds": 45.01273625018075,
+        "cpuSeconds": 0.8432924583333339,
+        "averageCpuPercentOneCore": 1.873453001493433,
+        "peakSampleCpuPercentOneCore": 46.47005776790316,
+        "rssMiBMin": 149.1875,
+        "rssMiBMax": 152.578125,
+        "footprintMiBMedian": 67.62593841552734,
+        "footprintMiBMax": 68.11031341552734,
+        "childCpuSeconds": 0.0
+      }
+    ]
+  },
+  "scan-and-recovery": {
+    "phase": "scan-and-recovery",
+    "recordedAt": "2026-09-08T21:16:38+0800",
+    "version": "0.1.0",
+    "build": "2",
+    "configuration": "Release",
+    "gitCommit": "beb4c13b176362f204249f68a7c6daf65b9b87dc",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "intervalSeconds": 0.1,
+    "method": "macOS proc_pid_rusage RUSAGE_INFO_V2, Mach ticks converted using mach_timebase_info; 100% CPU = one logical core",
+    "machTimebase": {
+      "numer": 125,
+      "denom": 3
+    },
+    "limitations": "Sampled peaks; very short-lived processes or their final CPU interval may be missed. Shared WidgetKit host costs are not attributed.",
+    "elapsedSeconds": 60.00338958296925,
+    "summary": [
+      {
+        "name": "Tokly",
+        "pid": 12175,
+        "samples": 576,
+        "observedSeconds": 60.00330370897427,
+        "cpuSeconds": 0.44866099999999953,
+        "averageCpuPercentOneCore": 0.7477271621177359,
+        "peakSampleCpuPercentOneCore": 69.77709312833547,
+        "rssMiBMin": 146.265625,
+        "rssMiBMax": 150.828125,
+        "footprintMiBMedian": 69.75096130371094,
+        "footprintMiBMax": 181.14158630371094,
+        "childCpuSeconds": 7.697958083333332
+      },
+      {
+        "name": "tokens-collector",
+        "pid": 14581,
+        "samples": 49,
+        "observedSeconds": 5.000624791719019,
+        "cpuSeconds": 7.105468708333333,
+        "averageCpuPercentOneCore": 142.09161863333384,
+        "peakSampleCpuPercentOneCore": 591.7255188556678,
+        "rssMiBMin": 250.828125,
+        "rssMiBMax": 794.53125,
+        "footprintMiBMedian": 243.25093841552734,
+        "footprintMiBMax": 754.7823028564453,
+        "childCpuSeconds": 0.0
+      }
+    ]
+  },
+  "recovery": {
+    "secondsAfterLastHelperSample": 47.68161837523803,
+    "mainFinalRssMiB": 146.90625,
+    "mainFinalFootprintMiB": 69.71971130371094,
+    "mainSettledFootprintMiBMin": 69.70408630371094,
+    "mainSettledFootprintMiBMax": 70.04783630371094,
+    "mainSettledFootprintMiBMedian": 69.75096130371094
+  },
+  "notes": [
+    "ui-interaction first phase started while app was hidden; it is a layout/AX warm-up observation, not the visible UI baseline",
+    "visible-ui-interaction includes opening and closing a model detail sheet and accessibility reads; navigation attempts that did not change pages are not claimed as completed",
+    "No standalone Widget process captured; shared system rendering costs are not attributed"
+  ]
+}

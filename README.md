@@ -176,7 +176,7 @@ codesign --verify --deep --strict \
   .build/TokensSigned/Build/Products/Release/Tokly.app
 ```
 
-`build-local.sh` 只构建，不安装、不购买、不公证，也不自动申请新证书。安装或更新时先正常退出旧进程，确认目标属于本应用，再复制签名包；不能覆盖其他同名应用。原开发机器的安装位置是 `~/Applications/Tokly.app`，其他机器不必沿用该位置。
+`build-local.sh` 只构建，不安装、不购买、不公证，也不自动申请新证书。安装或更新时先正常退出旧进程，确认目标属于本应用。应复制到干净的新目录、验签后替换旧包；尤其不能把Release直接合并覆盖到Debug包，残留dylib会导致签名失败。不能覆盖其他同名应用。原开发机器的安装位置是 `~/Applications/Tokly.app`，其他机器不必沿用该位置。
 
 不签名构建通过不等于 App Group、Gatekeeper 或真实桌面组件通过；换机器后必须重新验证签名和组件读取。
 
@@ -270,4 +270,4 @@ mkdir -p "$demo_dir/home" "$demo_dir/config"
 
 签名脚本默认Release，诊断时可传Debug；安装包记录构建配置和源码提交。不要用历史Debug或早期collector-probe的资源测量代表新的Release。`scripts/profile-runtime.py`支持对指定已运行app bundle做只读CPU时间、RSS和physical footprint采样；不读取会话正文、不自动触发采集，结果默认由调用者指定位置保存。
 
-当前版本评估见 [PERFORMANCE-0.1.0.md](docs/PERFORMANCE-0.1.0.md)：最新Release采集器已测，主应用Release完整资源评估仍待切换后补齐。不要把该报告理解为完整性能验收通过。
+当前版本CPU/内存基线见 [PERFORMANCE-0.1.0.md](docs/PERFORMANCE-0.1.0.md)：已覆盖最新Release后台、界面操作、真实刷新和冷/热采集器扫描；长期能耗与持续内存趋势不在本次验收范围。
