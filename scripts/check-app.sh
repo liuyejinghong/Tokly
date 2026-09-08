@@ -16,6 +16,6 @@ xcrun swiftc -target arm64-apple-macos14.0 -module-cache-path "$WORK/modules" \
   "$ROOT/Shared/UsageSnapshot.swift" "$ROOT/Shared/UsageAggregation.swift" "$ROOT/Shared/WidgetSnapshot.swift" \
   "$ROOT/TokensApp/RangeProjection.swift" "$ROOT/TokensApp/Tests/ProjectionChecks.swift" -o "$WORK/projection-checks"
 "$WORK/projection-checks" "$ROOT/Shared/sample-snapshot.json"
-xcodebuild -project "$ROOT/Tokens.xcodeproj" -scheme Tokens -configuration Debug \
+xcodebuild -project "$ROOT/Tokly.xcodeproj" -scheme Tokly -configuration Debug \
   -destination 'platform=macOS,arch=arm64' -derivedDataPath "$ROOT/.build/TokensDerivedData" \
   CODE_SIGNING_ALLOWED=NO MACOSX_DEPLOYMENT_TARGET=14.0 build

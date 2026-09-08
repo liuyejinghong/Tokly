@@ -57,7 +57,7 @@ struct WidgetsView: View {
     private func widgetCard(usage: AggregatedUsage?, medium: Bool) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text("Tokens").font(.caption.weight(.medium))
+                Text("Tokly").font(.caption.weight(.medium))
                 Spacer()
                 Text("今日").font(.caption2).foregroundStyle(.secondary)
             }

@@ -6,7 +6,7 @@ struct TokensApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {
-        Window("Tokens", id: "tokens-main") {
+        Window("Tokly", id: "tokens-main") {
             ContentView()
                 .environmentObject(state)
                 .onAppear {
@@ -73,7 +73,7 @@ struct ContentView: View {
                         Label("小组件", systemImage: "rectangle.on.rectangle").tag(Tab.widgets)
                         Label("设置", systemImage: "gear").tag(Tab.settings)
                     }
-                    .navigationTitle("Tokens")
+                    .navigationTitle("Tokly")
                 } detail: {
                     detailView
                         .sheet(item: Binding(

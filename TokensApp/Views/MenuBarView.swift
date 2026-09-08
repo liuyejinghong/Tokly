@@ -88,7 +88,7 @@ struct MenuBarView: View {
             }
             Text("\(Format.updatedText(state.lastSuccessAt)) 更新").font(.caption2).foregroundStyle(.secondary)
             Divider()
-            Button("退出 Tokens") { NSApp.terminate(nil) }
+            Button("退出 Tokly") { NSApp.terminate(nil) }
                 .buttonStyle(.plain).font(.callout).foregroundStyle(.secondary)
         }
         .padding(16)

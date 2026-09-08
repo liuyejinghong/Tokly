@@ -144,3 +144,7 @@ P5中，默认已核对客户端补了Codex归档、Claude transcripts、OpenCod
 用户已明确批准正式签名安装和桌面验证。主应用、helper、扩展使用现有开发身份，安装于/Users/ethan/Applications/Tokens.app；实际App Group由Config/Local.xcconfig中的团队前缀解析，与两份entitlement/Info.plist一致。未创建新证书、未购买或发布，未启用登录启动。
 
 真实采集、价格加载、模型详情、正式小/中号桌面添加、后台刷新和退出保留已观察。Cua桌面坐标入口不支持，后通过Finder的Menu键打开编辑组件库完成添加。完整交付范围和未实测项目见LOCAL-DELIVERY.md。所有外部Worker均已停止。自动开发跟进结束并暂停，后续按用户反馈继续。
+
+## 正式名称Tokly
+
+用户已确定Tokly。工程改为Tokly.xcodeproj、scheme Tokly、产品Tokly.app；内部Bundle/数据/Widget标识保留。签名安装于/Users/ethan/Applications/Tokly.app，实际启动和旧数据读取通过；旧Tokens安装包已备份。图标已作为资源接入。

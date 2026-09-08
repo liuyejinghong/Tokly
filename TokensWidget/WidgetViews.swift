@@ -46,7 +46,7 @@ struct TokensWidgetEntryView: View {
     private func smallView(snapshot: WidgetSnapshot, expired: Bool) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text("Tokens")
+                Text("Tokly")
                     .font(.caption.weight(.medium))
                 Spacer()
                 Text(expired ? WidgetReader.dayLabel(snapshot.date) : "今日")
@@ -54,7 +54,7 @@ struct TokensWidgetEntryView: View {
                     .foregroundStyle(.secondary)
             }
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel(expired ? "\(WidgetReader.dayLabel(snapshot.date))数据" : "Tokens 今日")
+            .accessibilityLabel(expired ? "\(WidgetReader.dayLabel(snapshot.date))数据" : "Tokly 今日")
             Text(WidgetReader.primaryText(for: snapshot))
                 .font(.system(size: 28, weight: .medium))
                 .monospacedDigit()
@@ -88,7 +88,7 @@ struct TokensWidgetEntryView: View {
         HStack(alignment: .top, spacing: 16) {
             VStack(alignment: .leading, spacing: 4) {
                 HStack {
-                    Text("Tokens")
+                    Text("Tokly")
                         .font(.caption.weight(.medium))
                     Spacer()
                     Text(expired ? WidgetReader.dayLabel(snapshot.date) : "今日")
@@ -153,7 +153,7 @@ struct TokensWidgetEntryView: View {
     private var placeholderView: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text("Tokens")
+                Text("Tokly")
                     .font(.caption.weight(.medium))
                 Spacer()
                 Text("今日")

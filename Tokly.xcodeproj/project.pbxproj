@@ -270,7 +270,7 @@
 			<key>explicitFileType</key>
 			<string>wrapper.application</string>
 			<key>path</key>
-			<string>Tokens.app</string>
+			<string>Tokly.app</string>
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
@@ -281,7 +281,7 @@
 			<key>explicitFileType</key>
 			<string>wrapper.app-extension</string>
 			<key>path</key>
-			<string>TokensWidget.appex</string>
+			<string>ToklyWidget.appex</string>
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
@@ -295,6 +295,7 @@
 				<string>T000000000000000000000005</string>
 				<string>W00000000000000000000007</string>
 				<string>T000000000000000000000006</string>
+				<string>B73A2E02B6E64B22B83E6C1A</string>
 			</array>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
@@ -630,7 +631,9 @@
 			<key>buildActionMask</key>
 			<integer>2147483647</integer>
 			<key>files</key>
-			<array/>
+			<array>
+				<string>49348314CED042BBA2460C8A</string>
+			</array>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<integer>0</integer>
 		</dict>
@@ -733,9 +736,9 @@
 				<string>W66666666666666666666666</string>
 			</array>
 			<key>name</key>
-			<string>Tokens</string>
+			<string>Tokly</string>
 			<key>productName</key>
-			<string>Tokens</string>
+			<string>Tokly</string>
 			<key>productReference</key>
 			<string>444444444444444444444444</string>
 			<key>productType</key>
@@ -758,9 +761,9 @@
 			<key>dependencies</key>
 			<array/>
 			<key>name</key>
-			<string>TokensWidget</string>
+			<string>ToklyWidget</string>
 			<key>productName</key>
-			<string>TokensWidget</string>
+			<string>ToklyWidget</string>
 			<key>productReference</key>
 			<string>W44444444444444444444444</string>
 			<key>productType</key>
@@ -924,7 +927,7 @@
 			<key>buildSettings</key>
 			<dict>
 				<key>PRODUCT_NAME</key>
-				<string>Tokens</string>
+				<string>Tokly</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
 				<string>local.tokensmacos.app</string>
 				<key>INFOPLIST_FILE</key>
@@ -957,7 +960,7 @@
 			<key>buildSettings</key>
 			<dict>
 				<key>PRODUCT_NAME</key>
-				<string>Tokens</string>
+				<string>Tokly</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
 				<string>local.tokensmacos.app</string>
 				<key>INFOPLIST_FILE</key>
@@ -1004,7 +1007,7 @@
 			<key>buildSettings</key>
 			<dict>
 				<key>PRODUCT_NAME</key>
-				<string>TokensWidget</string>
+				<string>ToklyWidget</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
 				<string>local.tokensmacos.app.widget</string>
 				<key>INFOPLIST_FILE</key>
@@ -1038,7 +1041,7 @@
 			<key>buildSettings</key>
 			<dict>
 				<key>PRODUCT_NAME</key>
-				<string>TokensWidget</string>
+				<string>ToklyWidget</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
 				<string>local.tokensmacos.app.widget</string>
 				<key>INFOPLIST_FILE</key>
@@ -1064,6 +1067,26 @@
 			</dict>
 			<key>name</key>
 			<string>Release</string>
+		</dict>
+		<key>B73A2E02B6E64B22B83E6C1A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.icns</string>
+			<key>name</key>
+			<string>Tokly.icns</string>
+			<key>path</key>
+			<string>assets/branding/Tokly.icns</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>49348314CED042BBA2460C8A</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>fileRef</key>
+			<string>B73A2E02B6E64B22B83E6C1A</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

@@ -1,10 +1,10 @@
-# Tokens 本机开发版
+# Tokly 本机开发版
 
-2026-09-08。已安装到 `/Users/ethan/Applications/Tokens.app`，小号和中号正式组件已添加到桌面。主应用目前可在后台继续采集。旧的 TokensPrep 两张卡片仍是合成测试数据，未移除用户已有桌面项目。
+2026-09-08。已安装到 `/Users/ethan/Applications/Tokly.app`，小号和中号正式组件已添加到桌面。主应用目前可在后台继续采集。旧的 TokensPrep 两张卡片仍是合成测试数据，未移除用户已有桌面项目。
 
 ## 使用
 
-打开 Tokens 查看今日、近7天和自然月用量。客户端可展开到模型，模型详情保留客户端与所选范围。费用是按公开单价估算，星号表示部分Token缺价；未知费用不当作免费。
+打开 Tokly 查看今日、近7天和自然月用量。客户端可展开到模型，模型详情保留客户端与所选范围。费用是按公开单价估算，星号表示部分Token缺价；未知费用不当作免费。
 
 默认每10分钟采集，设置可选5分钟。关闭窗口仍由菜单栏运行，退出应用停止采集；退出后桌面组件保留最后成功值。主窗口筛选不改变组件的全部启用来源今日总量。来源选择和登录启动由用户控制，本轮未修改登录启动设置。
 
@@ -29,7 +29,7 @@
 
 ## 重建
 
-运行 `bash scripts/check-collector.sh` 构建helper。复制 `Config/Local.xcconfig.example` 为已忽略的 `Config/Local.xcconfig`，填本机团队，再运行 `bash scripts/build-local.sh`。签名产物位于 `.build/TokensSigned/Build/Products/Debug/Tokens.app`。脚本使用现有开发身份，不自动申请新证书或公开发布。
+运行 `bash scripts/check-collector.sh` 构建helper。复制 `Config/Local.xcconfig.example` 为已忽略的 `Config/Local.xcconfig`，填本机团队，再运行 `bash scripts/build-local.sh`。签名产物位于 `.build/TokensSigned/Build/Products/Debug/Tokly.app`。脚本使用现有开发身份，不自动申请新证书或公开发布。
 
 ## 菜单栏修复
 
@@ -40,3 +40,7 @@
 菜单栏弹窗默认按模型展示并按Token降序，同名模型保留客户端副标题和独立身份；设置→显示与启动→菜单栏列表可选模型/客户端。弹窗增加今日、近7天、本月，与主窗口筛选独立；打开统计窗口跟随弹窗所选范围，状态栏主指标及桌面小组件仍是今日。
 
 统一TokenFormat供App和Widget调用，>=1,000,000,000采用B，3670.88M现在显示3.67B。新增6项生产投影/格式检查，主应用102项和Widget59项检查通过。签名更新已安装重启，App本月3.67B已实际读回；随后桌面连接断开，新菜单按钮和设置尚未完成运行截图复核。命名/图标候选见BRANDING.md，尚未改身份或安装候选图标。
+
+## Tokly命名落地
+
+用户确定Tokly后，应用名、原生窗口品牌、菜单项、Widget显示名和Xcode工程/scheme已更新。图标使用已生成的蓝绿叠片并打包为macOS多分辨率ICNS。102项主应用检查、59项Widget检查及签名构建通过；安装后实际读回Tokly应用名和原有统计。Bundle ID、Widget kind、App Group和数据目录保留，既有桌面组件无需重建。工作目录保留原路径以免破坏已有引用。

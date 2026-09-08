@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Tokens</string>
+	<string>Tokly</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -39,5 +39,7 @@
 	<string>NSApplication</string>
 	<key>TokensAppGroupIdentifier</key>
 	<string>$(TOKENS_APP_GROUP)</string>
+	<key>CFBundleIconFile</key>
+	<string>Tokly</string>
 </dict>
 </plist>

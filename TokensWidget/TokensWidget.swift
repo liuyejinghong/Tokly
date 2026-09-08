@@ -74,7 +74,7 @@ struct TokensWidget: Widget {
         StaticConfiguration(kind: kind, provider: TokensProvider()) { entry in
             TokensWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Tokens")
+        .configurationDisplayName("Tokly")
         .description("今日用量")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
