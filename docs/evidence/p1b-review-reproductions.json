@@ -1,0 +1,44 @@
+[
+  {
+    "case": "old_and_fresh_caches",
+    "exit": 0,
+    "pricingAsOf": "2026-09-08T08:27:52Z",
+    "warnings": [],
+    "daily": [],
+    "sources": [
+      {
+        "clientId": "codex",
+        "status": "notFound",
+        "sourceCount": 0
+      }
+    ]
+  },
+  {
+    "case": "invalid_price_data_with_valid_timestamp",
+    "exit": 0,
+    "pricingAsOf": "2026-09-08T08:27:52Z",
+    "warnings": [],
+    "daily": [],
+    "sources": [
+      {
+        "clientId": "codex",
+        "status": "notFound",
+        "sourceCount": 0
+      }
+    ]
+  },
+  {
+    "case": "unreadable_nested_session",
+    "exit": 0,
+    "pricingAsOf": "2026-09-08T08:27:52Z",
+    "warnings": [],
+    "daily": [],
+    "sources": [
+      {
+        "clientId": "codex",
+        "status": "found",
+        "sourceCount": 1
+      }
+    ]
+  }
+]

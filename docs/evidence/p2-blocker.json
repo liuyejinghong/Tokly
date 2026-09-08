@@ -1,0 +1,12 @@
+{
+  "taskId": "e34777de-714d-4808-82b0-1a06a8656f26",
+  "turn": 1,
+  "state": "failed",
+  "finished": true,
+  "statusCode": 403,
+  "errorType": "RegionError",
+  "message": "This model is not available in your country.",
+  "isRetryable": false,
+  "swiftFilesCreated": false,
+  "automation": "paused"
+}

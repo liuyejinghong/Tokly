@@ -1,0 +1,13 @@
+{
+  "taskId": "e34777de-714d-4808-82b0-1a06a8656f26",
+  "turn": 3,
+  "accepted": true,
+  "independentChecksPassed": 103,
+  "probe": {
+    "actualCollectorSnapshotDecodes": true,
+    "actualDayHourConsistency": true,
+    "unknownPlusEmptyAmount": null,
+    "codableRoundtrip": true,
+    "widgetPreservesDataTimestamp": true
+  }
+}

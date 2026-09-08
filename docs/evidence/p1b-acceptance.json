@@ -1,0 +1,13 @@
+{
+  "taskId": "87b33c20-8406-44aa-94eb-732bde71758f",
+  "turn": 3,
+  "implementationAccepted": true,
+  "checks": {
+    "testsPassed": 37,
+    "clippy": "passed",
+    "release": "passed"
+  },
+  "tokenParity": "p1b-real-parity.json",
+  "scope": "primary-root/discovered-file failure protection and scan/pricing protocol",
+  "releaseGate": "P5 reachable alternate-root failure handling remains open"
+}

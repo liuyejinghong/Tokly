@@ -1,0 +1,18 @@
+{
+  "taskId": "e34777de-714d-4808-82b0-1a06a8656f26",
+  "reviewedTurn": 2,
+  "accepted": false,
+  "independentChecksPassed": 93,
+  "probe": {
+    "validCollectorSnapshotDecodes": true,
+    "validCollectorDayHourConsistency": false,
+    "unknownPlusEmptyAmount": 0,
+    "codableRoundtrip": false,
+    "widgetPreservesDataTimestamp": false
+  },
+  "followup": {
+    "turn": 3,
+    "requestId": "tokens-p2-acceptance-fixes-20260908-01",
+    "finished": false
+  }
+}

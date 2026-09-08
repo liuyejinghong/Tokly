@@ -1,0 +1,9 @@
+{
+  "taskId": "e34777de-714d-4808-82b0-1a06a8656f26",
+  "requestId": "tokens-p2-retry-20260908-01",
+  "turn": 2,
+  "state": "running",
+  "finished": false,
+  "modelResponseObserved": true,
+  "automation": "ACTIVE"
+}

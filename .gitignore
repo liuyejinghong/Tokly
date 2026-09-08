@@ -10,3 +10,5 @@ validation/WidgetSmoke/DerivedData/
 
 .build/
 Collector/vendor/target/
+
+Config/Local.xcconfig

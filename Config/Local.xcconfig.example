@@ -1,0 +1,3 @@
+// Set your local Apple development team. Keep Local.xcconfig out of Git.
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+TOKENS_APP_GROUP = $(DEVELOPMENT_TEAM).tokensmacos.app

@@ -1,0 +1,12 @@
+{
+  "case": "unreadable_nested_directory",
+  "exit": 0,
+  "daily": [],
+  "sources": [
+    {
+      "clientId": "codex",
+      "status": "notFound",
+      "sourceCount": 0
+    }
+  ]
+}

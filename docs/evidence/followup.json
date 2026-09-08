@@ -1,0 +1,10 @@
+{
+  "automationId": "tokens",
+  "kind": "heartbeat",
+  "status": "ACTIVE",
+  "intervalMinutes": 5,
+  "boundToCurrentThread": true,
+  "currentWorker": "87b33c20-8406-44aa-94eb-732bde71758f",
+  "workerStopped": true,
+  "acceptance": "pending"
+}

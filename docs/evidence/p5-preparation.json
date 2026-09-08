@@ -1,0 +1,16 @@
+{
+  "collectorTests": 48,
+  "collectorClippy": "passed",
+  "collectorRelease": "passed",
+  "appChecks": 96,
+  "unsignedAppExtensionBuild": "passed",
+  "additionalRootChecks": [
+    "Codex archived sessions",
+    "Claude transcripts",
+    "OpenCode data root",
+    "selected headless roots"
+  ],
+  "otherClientsAndCustomMirrors": "not individually qualified",
+  "signInstallRuntime": "awaiting user authorization",
+  "automation": "paused"
+}

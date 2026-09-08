@@ -25,7 +25,7 @@
 - timezone：IANA字符串
 - range：对象，since、until 都为 YYYY-MM-DD
 - hourlyDate：YYYY-MM-DD
-- pricingAsOf：本次所用价格快照时间，可为null
+- pricingAsOf：本次已加载价格缓存的保守时间，多个可用缓存取最旧时间，可为null；损坏或未来时间的缓存不得冒充可用快照
 - daily：按 date 升序的 DayBucket 数组
 - hourly：hourlyDate 当天按 hour 升序的 HourBucket 数组
 - sources：SourceStatus 数组

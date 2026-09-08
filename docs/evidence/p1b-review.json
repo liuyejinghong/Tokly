@@ -1,0 +1,18 @@
+{
+  "taskId": "87b33c20-8406-44aa-94eb-732bde71758f",
+  "reviewedTurn": 1,
+  "accepted": false,
+  "independentChecks": {
+    "testsPassed": 28,
+    "clippy": "passed",
+    "releaseBuild": "passed"
+  },
+  "reproductions": "p1b-review-reproductions.json",
+  "followup": {
+    "requestId": "tokens-p1b-collector-rework-20260908-01",
+    "turn": 2,
+    "state": "submitted",
+    "finished": false
+  },
+  "realDataParity": "deferred until boundary corrections pass"
+}

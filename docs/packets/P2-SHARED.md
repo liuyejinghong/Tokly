@@ -13,3 +13,9 @@
 - WidgetSnapshot只含日期、更新时间、今日汇总、客户端摘要及必要显示偏好，不含整个历史协议或源路径。
 
 检查：闰月/4-5-6周/跨月/时区/早月近7天/父子守恒/同模型跨客户端/Int64大数/缺价与免费/旧日期快照。采用Foundation及小型可执行检查，避免新增测试框架。
+
+## 执行约定
+
+唯一允许命令：`bash scripts/check-shared.sh`。Foundation-only，以macOS14目标编译三个源文件和Shared/Tests/Checks.swift（@main可执行断言）；样例路径由命令行首参数传入。脚本由Codex维护。不得读取真实日志、签名配置或修改批准样例；不新增Package/框架。
+
+协议结构应校验schemaVersion、日期/小时、非负Token、费用有限非负、range与hourlyDate一致；缺失数据不能零填。明确以调用者给定的now/timezone计算当前日期、范围和未来null，避免隐式系统时间让测试漂移。同一个Token饱和加法和费用合并路径供日/小时/客户端/Widget使用；全部缺价与部分已知及真实免费保持区别。不要把价格刷新报告当scan快照解析。UI和URL路由由P3/P4实现，本包只提供所需纯数据函数。

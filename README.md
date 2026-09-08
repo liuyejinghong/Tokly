@@ -2,7 +2,7 @@
 
 基于 [missuo/tokens](https://github.com/missuo/tokens) 的本机 AI 用量统计应用设计：macOS 菜单栏、详情窗口与原生桌面小组件。
 
-开发前置已完成：固定采集核心、本机性能验证、开发签名、安装与真实桌面小组件的共享/后台刷新均已通过。已有可安装的合成数据验证程序；正式统计应用尚未实现。
+本机开发版已完成并安装：原生SwiftUI窗口、菜单栏、本地Rust采集器及小号/中号桌面组件已接通真实数据。使用方法、验收证据与限制见 [本机交付说明](docs/LOCAL-DELIVERY.md)。
 
 - [前置准备状态](docs/PREPARATION.md)
 - [Xcode 环境复验](docs/XCODE-ENVIRONMENT.md)

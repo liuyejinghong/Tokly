@@ -1,0 +1,12 @@
+{
+  "baseline": "fixed corpus upstream cadence-600-0 graph (same post-injection corpus)",
+  "candidateTurn": 2,
+  "since": "2026-09-01",
+  "until": "2026-09-08",
+  "dateClientGroups": 13,
+  "fiveTokenCategoriesEqual": true,
+  "hourlyMatchesDay": true,
+  "mismatchedGroupCount": 0,
+  "pricingCompared": false,
+  "baselineAdjustment": "Earlier full-0 baseline preceded the documented 160-token synthetic cadence addition. Used final baseline matching current fixed corpus."
+}

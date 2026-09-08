@@ -1,0 +1,21 @@
+{
+  "installedApp": "/Users/ethan/Applications/Tokens.app",
+  "signedWithExistingDevelopmentIdentity": true,
+  "helperSignedWithSameTeam": true,
+  "strictDeepSignatureCheck": true,
+  "actualGroupIdentifier": "V394C4ZRF5.tokensmacos.app",
+  "actualWindowAndModelDetail": true,
+  "liveTokenAndPartialCostDisplay": true,
+  "desktopSmallAndMediumAdded": true,
+  "backgroundWidgetUpdatesObserved": [
+    "19:12",
+    "19:22"
+  ],
+  "widgetDataRetainedAfterQuit": true,
+  "loginStartupChanged": false,
+  "newCertificateCreated": false,
+  "actualLightDesktopTest": false,
+  "actualSleepAndMidnightTest": false,
+  "widgetTapRuntimeVerified": false,
+  "longDurationEnergyMeasured": false
+}
