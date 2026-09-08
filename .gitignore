@@ -7,3 +7,6 @@ __pycache__/
 validation/WidgetSmoke/Config/Local.xcconfig
 validation/WidgetSmoke/DerivedData/
 **/xcuserdata/
+
+.build/
+Collector/vendor/target/

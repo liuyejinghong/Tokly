@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-08T00:01:00Z",
+  "timezone": "Asia/Shanghai",
+  "range": {
+    "since": "2026-09-01",
+    "until": "2026-09-08"
+  },
+  "hourlyDate": "2026-09-08",
+  "pricingAsOf": "2026-09-08T00:00:00Z",
+  "daily": [
+    {
+      "date": "2026-09-08",
+      "clients": [
+        {
+          "clientId": "codex",
+          "models": [
+            {
+              "modelId": "fixture-model",
+              "tokens": {
+                "input": 80,
+                "output": 50,
+                "cacheRead": 20,
+                "cacheWrite": 0,
+                "reasoning": 10
+              },
+              "estimatedCost": {
+                "amountUsd": 0.000202,
+                "complete": true,
+                "unpricedTokens": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "hourly": [
+    {
+      "hour": 8,
+      "clients": [
+        {
+          "clientId": "codex",
+          "models": [
+            {
+              "modelId": "fixture-model",
+              "tokens": {
+                "input": 80,
+                "output": 50,
+                "cacheRead": 20,
+                "cacheWrite": 0,
+                "reasoning": 10
+              },
+              "estimatedCost": {
+                "amountUsd": 0.000202,
+                "complete": true,
+                "unpricedTokens": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "clientId": "codex",
+      "status": "found",
+      "sourceCount": 1
+    }
+  ],
+  "warnings": []
+}

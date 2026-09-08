@@ -1,0 +1,14 @@
+{
+  "request_id": "tokens-p1a-core-api-20260908-01",
+  "directory": "/Users/ethan/tokens-macos",
+  "mode": "write",
+  "writable_paths": [
+    "Collector/vendor/tokens-core/src/lib.rs",
+    "Collector/vendor/tokens-core/tests/collector_api.rs"
+  ],
+  "allowed_commands": [
+    "bash scripts/check-collector-api.sh"
+  ],
+  "timeout_seconds": 900,
+  "task": "Implement the exact settled packet docs/packets/P1A-CORE-API.md. Read it first; it contains authoritative API, ownership, tests and constraints. You are not alone in this repository: Codex is editing docs/protocol/scripts concurrently; do not revert any work or write outside your two literal owned files. Use only opencode-go/muse-spark-1.3-contributor with Sisyphus - ultraworker. Do not delegate. This packet only extracts public collect_messages(&ReportOptions, Option<&pricing::PricingService>) returning filtered normalized Vec<UnifiedMessage>, reuses it from existing graph generation, preserves all parsing/dedup/cache/date/price behavior, and adds focused synthetic integration tests. Do not change parsers, pricing math, UPSTREAM manifest or unrelated graph logic. Read public project source only; do not read any real session data, account/credential files, Local.xcconfig, .build caches, or files outside assigned directory. Run only the exact permitted command bash scripts/check-collector-api.sh once source and tests exist. Public test dependencies have been preloaded and script is offline. Test fixtures must use temporary isolated homes and TOKENS_CONFIG_DIR, never user's home. Do not guess APIs; inspect local upstream sources and validation/check_fixture.py. Return concrete diff summary, actual test output, and remaining limitations. completed is not final acceptance; Codex reviews and reruns. No commit, push, signing, installation, upload, external service or real log scan."
+}
