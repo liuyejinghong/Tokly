@@ -53,6 +53,9 @@ public final class AppState: ObservableObject {
     @Published public var interval: TimeInterval {
         didSet { UserDefaults.standard.set(interval, forKey: "scanInterval"); rescheduleTimer() }
     }
+    @Published public var menuGrouping: MenuGrouping {
+        didSet { UserDefaults.standard.set(menuGrouping.rawValue, forKey: "menuGrouping") }
+    }
     @Published public var menuMetric: MenuMetric {
         didSet { UserDefaults.standard.set(menuMetric.rawValue, forKey: "menuMetric") }
     }
@@ -98,6 +101,7 @@ public final class AppState: ObservableObject {
         }
         let iv = defaults.double(forKey: "scanInterval")
         self.interval = (iv == 300 || iv == 600) ? iv : 600
+        self.menuGrouping = MenuGrouping(rawValue: defaults.string(forKey: "menuGrouping") ?? "model") ?? .model
         self.menuMetric = MenuMetric(rawValue: defaults.string(forKey: "menuMetric") ?? "tokens") ?? .tokens
         self.widgetShowCost = defaults.object(forKey: "widgetShowCost") as? Bool ?? true
         self.timeZoneID = defaults.string(forKey: "statsTimeZone") ?? TimeZone.current.identifier

@@ -54,6 +54,20 @@ struct SettingsView: View {
                     Divider()
                     HStack {
                         VStack(alignment: .leading) {
+                            Text("菜单栏列表")
+                            Text("按 Token 用量从高到低排列").font(.caption).foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Picker("菜单栏列表", selection: $state.menuGrouping) {
+                            Text("模型").tag(MenuGrouping.model)
+                            Text("客户端").tag(MenuGrouping.client)
+                        }
+                        .frame(maxWidth: 160)
+                    }
+                    .padding(.vertical, 4)
+                    Divider()
+                    HStack {
+                        VStack(alignment: .leading) {
                             Text("小组件主指标")
                             Text("小号与中号使用相同指标").font(.caption).foregroundStyle(.secondary)
                         }

@@ -192,6 +192,20 @@ struct ProjectionChecks {
             }
         }
 
+        check(TokenFormat.compact(1_000_000_000) == "1B", "billion threshold")
+        check(TokenFormat.compact(3_670_880_000) == "3.67B", "monthly billion format")
+        check(TokenFormat.compact(294_990_000) == "294.99M", "millions unchanged")
+        let menu = snapshot(since: "2026-09-07", until: "2026-09-08", hourlyDate: "2026-09-08", daily: [
+            pricedDay("2026-09-07", [(client: "codex", model: "shared", input: 40, amount: 1)]),
+            pricedDay("2026-09-08", [(client: "claude", model: "shared", input: 60, amount: 1),
+                                   (client: "codex", model: "shared", input: 30, amount: 1)])
+        ], sources: ["codex", "claude"])
+        let modelRows = RangeProjection.menuRows(snapshot: menu, days: ["2026-09-07", "2026-09-08"], enabled: ["codex", "claude"], grouping: .model)
+        check(modelRows.map { $0.tokens } == [70, 60], "models aggregate range and sort descending")
+        check(Set(modelRows.map { $0.id }).count == 2, "same model preserves client identity")
+        let todayRows = RangeProjection.menuRows(snapshot: menu, days: ["2026-09-08"], enabled: ["codex", "claude"], grouping: .client)
+        check(todayRows.map { $0.tokens } == [60, 30], "today/client switch uses same range")
+
         print("PASS \(passes) projection checks, FAIL \(failures)")
         if failures > 0 { exit(1) }
     }

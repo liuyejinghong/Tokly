@@ -81,3 +81,31 @@ public enum RangeProjection {
         return Aggregation.aggregate(entries)
     }
 }
+
+public enum MenuGrouping: String, CaseIterable {
+    case model, client
+}
+
+public struct MenuUsageRow: Identifiable {
+    public var id: String
+    public var name: String
+    public var clientId: String?
+    public var tokens: Int64
+}
+
+extension RangeProjection {
+    public static func menuRows(snapshot: ScanSnapshot, days: [String], enabled: Set<String>, grouping: MenuGrouping) -> [MenuUsageRow] {
+        let groups = clients(snapshot: snapshot, days: Set(days), enabled: enabled, filter: nil)
+        let rows: [MenuUsageRow] = groups.flatMap { client in
+            if grouping == .client {
+                return [MenuUsageRow(id: client.clientId, name: client.clientId, clientId: nil, tokens: client.total.tokens.total)]
+            }
+            return client.models.map { model in
+                MenuUsageRow(id: client.clientId + "\0" + model.modelId, name: model.modelId, clientId: client.clientId, tokens: model.usage.tokens.total)
+            }
+        }
+        return rows.filter { $0.tokens > 0 }.sorted {
+            $0.tokens == $1.tokens ? $0.id < $1.id : $0.tokens > $1.tokens
+        }
+    }
+}

@@ -414,3 +414,19 @@ public enum Aggregation {
         }
     }
 }
+
+public enum TokenFormat {
+    public static func compact(_ value: Int64) -> String {
+        for (threshold, suffix) in [(Int64(1_000_000_000), "B"), (Int64(1_000_000), "M")] {
+            if value >= threshold {
+                return String(format: "%.2f", Double(value) / Double(threshold))
+                    .replacingOccurrences(of: ".00", with: "") + suffix
+            }
+        }
+        if value >= 1_000 {
+            if value % 1_000 == 0 { return "\(value / 1_000)K" }
+            return String(format: "%.1fK", Double(value) / 1_000)
+        }
+        return "\(value)"
+    }
+}

@@ -1,17 +1,8 @@
 import Foundation
 
 public enum Format {
-    public static func compact(_ v: Int64) -> String {
-        let d = Double(v)
-        if d >= 1_000_000 {
-            let s = String(format: "%.2f", d / 1_000_000)
-            return s.replacingOccurrences(of: ".00", with: "") + "M"
-        }
-        if d >= 1_000 {
-            if v % 1000 == 0 { return "\(v / 1000)K" }
-            return String(format: "%.1fK", d / 1000)
-        }
-        return "\(v)"
+    public static func compact(_ value: Int64) -> String {
+        TokenFormat.compact(value)
     }
 
     public static func money(_ v: Double) -> String {
