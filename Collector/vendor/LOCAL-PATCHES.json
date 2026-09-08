@@ -1,7 +1,7 @@
 {
   "upstreamRevision": "75aba190695c9de5f2695d9baba6afd3c8cb63f8",
   "acceptedOn": "2026-09-08",
-  "summary": "P1A: extract local collection API without parser or pricing changes; add isolated synthetic integration checks.",
+  "summary": "Local collector API and synthetic tests; optional bundled SQLite feature for system-SQLite Store builds. Parser/pricing implementations unchanged.",
   "files": {
     "tokens-core/src/lib.rs": {
       "packet": "P1A",
@@ -12,6 +12,11 @@
       "packet": "P1A",
       "upstreamSha256": null,
       "sha256": "f2a0836b4d3e03babf891b441cc2d7161a71ee9aae70dcf6c88b197f45ff136b"
+    },
+    "tokens-core/Cargo.toml": {
+      "packet": "App Store sandbox",
+      "upstreamSha256": "a1dcd02789b5d6f01ec4a0f70fa2034130ffa5973b69fa8651091cad2dc364b5",
+      "sha256": "d74fb31ca4c96c8573ac96b8d7a5c923b52eee064f54eda8c98d940aa44d59ca"
     }
   }
 }

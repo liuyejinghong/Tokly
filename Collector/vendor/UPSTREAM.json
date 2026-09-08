@@ -2,7 +2,8 @@
   "repository": "https://github.com/missuo/tokens",
   "revision": "75aba190695c9de5f2695d9baba6afd3c8cb63f8",
   "localChanges": [
-    "Workspace members limited to tokens-core; parser and pricing sources unchanged."
+    "Workspace members limited to tokens-core; parser and pricing sources unchanged.",
+    "SQLite bundling is now an explicit default feature; Store checks can link macOS system SQLite without changing parsers."
   ],
   "sha256": {
     "tokens-core/Cargo.toml": "a1dcd02789b5d6f01ec4a0f70fa2034130ffa5973b69fa8651091cad2dc364b5",

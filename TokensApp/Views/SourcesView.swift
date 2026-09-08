@@ -9,7 +9,7 @@ struct SourcesView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text("数据来源").font(.title2.weight(.medium))
-                        Text("自动发现这台 Mac 上的用量记录").font(.callout).foregroundStyle(.secondary)
+                        Text(state.usesDirectoryGrants ? "只读取已授权的客户端日志目录" : "自动发现这台 Mac 上的用量记录").font(.callout).foregroundStyle(.secondary)
                     }
                     Spacer()
                     Button("重新检测") { state.requestScan(userInitiated: true) }
@@ -18,8 +18,9 @@ struct SourcesView: View {
                 if let err = state.lastError {
                     ErrorBanner(message: err, snapshotLabel: state.lastSuccessAt.map { "上次成功 " + Format.updatedText($0) }, onRetry: { state.retry() })
                 }
+                if let error = state.directoryAccessError { Text(error).font(.caption).foregroundStyle(.orange) }
                 VStack(spacing: 0) {
-                    ForEach(SourceRegistry.orderedForOnboarding) { entry in
+                    ForEach(state.availableSources) { entry in
                         HStack(alignment: .top, spacing: 12) {
                             Text(String(entry.displayName.prefix(2))).font(.caption).frame(width: 32, height: 32)
                                 .background(Color(nsColor: .windowBackgroundColor), in: RoundedRectangle(cornerRadius: 7))
@@ -30,6 +31,7 @@ struct SourcesView: View {
                                     statusTag(entry.id)
                                 }
                                 Text(entry.pathHint).font(.caption2).foregroundStyle(.secondary)
+                                if state.usesDirectoryGrants { SourceDirectoryControls(client: entry.id) }
                                 Text("仅统计已启用来源在这台设备上的记录；不读取账号数据。")
                                     .font(.caption2).foregroundStyle(.secondary)
                             }
@@ -65,7 +67,11 @@ struct SourcesView: View {
 
     @ViewBuilder
     private func statusTag(_ id: String) -> some View {
-        if state.filteredSnapshot() == nil {
+        if !state.enabledClients.contains(id) {
+            Text("未启用").font(.caption2).foregroundStyle(.secondary)
+        } else if state.usesDirectoryGrants && !state.hasDirectoryGrant(client: id) {
+            Text("未授权").font(.caption2).foregroundStyle(.secondary)
+        } else if state.filteredSnapshot() == nil {
             Text("尚未检测").font(.caption2).padding(.horizontal, 6).padding(.vertical, 1)
                 .background(Color(nsColor: .windowBackgroundColor), in: RoundedRectangle(cornerRadius: 4))
                 .foregroundStyle(.secondary)
@@ -83,5 +89,33 @@ struct SourcesView: View {
                 .background(Color(nsColor: .windowBackgroundColor), in: RoundedRectangle(cornerRadius: 4))
                 .foregroundStyle(.secondary)
         }
+    }
+}
+
+struct SourceDirectoryControls: View {
+    @EnvironmentObject var state: AppState
+    let client: String
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ForEach(SourceDirectoryRole.all.filter { $0.client == client }) { role in
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(role.label).font(.caption)
+                        Text(state.directoryPath(role: role.id) ?? "尚未授权")
+                            .font(.caption2).foregroundStyle(.secondary).lineLimit(2)
+                    }
+                    Spacer()
+                    Button(state.directoryPath(role: role.id) == nil ? "选择目录" : "更改") {
+                        state.authorizeDirectory(role: role)
+                    }.font(.caption)
+                        .accessibilityLabel("选择\(SourceRegistry.displayName(for: client))\(role.label)")
+                    if state.directoryPath(role: role.id) != nil {
+                        Button("移除") { state.removeDirectory(role: role.id) }.font(.caption)
+                            .accessibilityLabel("移除\(SourceRegistry.displayName(for: client))\(role.label)授权")
+                    }
+                }
+            }
+        }
+        .padding(.vertical, 6)
     }
 }

@@ -259,7 +259,7 @@
 			<key>lastKnownFileType</key>
 			<string>compiled.mach-o.executable</string>
 			<key>path</key>
-			<string>.build/collector-target/release/tokens-collector</string>
+			<string>$(TOKLY_HELPER_PATH)</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
@@ -297,6 +297,10 @@
 				<string>T000000000000000000000006</string>
 				<string>B73A2E02B6E64B22B83E6C1A</string>
 				<string>4BD2C47182284ED4904FD742</string>
+				<string>30D3090FCC334A53B4B81B54</string>
+				<string>659F77C643F44B6F9265B4E9</string>
+				<string>CD035F915FAD4C71AC1292EF</string>
+				<string>733048B731CD42C187BA2304</string>
 			</array>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
@@ -610,6 +614,7 @@
 				<string>555555555555555555555521</string>
 				<string>555555555555555555555522</string>
 				<string>555555555555555555555523</string>
+				<string>98FFE05B4E2343B295B7DAD4</string>
 			</array>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<integer>0</integer>
@@ -634,6 +639,8 @@
 			<key>files</key>
 			<array>
 				<string>49348314CED042BBA2460C8A</string>
+				<string>F27EEA72F0AE46B898E1B4BA</string>
+				<string>3BF9E5C58376424A9C410B4E</string>
 			</array>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<integer>0</integer>
@@ -693,7 +700,9 @@
 			<key>buildActionMask</key>
 			<integer>2147483647</integer>
 			<key>files</key>
-			<array/>
+			<array>
+				<string>9782F223366E4EFE997059E5</string>
+			</array>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<integer>0</integer>
 		</dict>
@@ -934,11 +943,11 @@
 				<key>PRODUCT_NAME</key>
 				<string>Tokly</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>local.tokensmacos.app</string>
+				<string>$(TOKLY_APP_BUNDLE_ID)</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Config/AppInfo.plist</string>
+				<string>$(TOKLY_APP_INFO)</string>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>Config/App.entitlements</string>
+				<string>$(TOKLY_APP_ENTITLEMENTS)</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Manual</string>
 				<key>CODE_SIGN_IDENTITY</key>
@@ -954,6 +963,14 @@
 					<string>$(inherited)</string>
 					<string>@executable_path/../Frameworks</string>
 				</array>
+				<key>TOKLY_APP_BUNDLE_ID</key>
+				<string>local.tokensmacos.app</string>
+				<key>TOKLY_APP_INFO</key>
+				<string>Config/AppInfo.plist</string>
+				<key>TOKLY_APP_ENTITLEMENTS</key>
+				<string>Config/App.entitlements</string>
+				<key>TOKLY_HELPER_PATH</key>
+				<string>.build/collector-target/release/tokens-collector</string>
 			</dict>
 			<key>name</key>
 			<string>Debug</string>
@@ -969,11 +986,11 @@
 				<key>PRODUCT_NAME</key>
 				<string>Tokly</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>local.tokensmacos.app</string>
+				<string>$(TOKLY_APP_BUNDLE_ID)</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Config/AppInfo.plist</string>
+				<string>$(TOKLY_APP_INFO)</string>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>Config/App.entitlements</string>
+				<string>$(TOKLY_APP_ENTITLEMENTS)</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Manual</string>
 				<key>CODE_SIGN_IDENTITY</key>
@@ -989,6 +1006,14 @@
 					<string>$(inherited)</string>
 					<string>@executable_path/../Frameworks</string>
 				</array>
+				<key>TOKLY_APP_BUNDLE_ID</key>
+				<string>local.tokensmacos.app</string>
+				<key>TOKLY_APP_INFO</key>
+				<string>Config/AppInfo.plist</string>
+				<key>TOKLY_APP_ENTITLEMENTS</key>
+				<string>Config/App.entitlements</string>
+				<key>TOKLY_HELPER_PATH</key>
+				<string>.build/collector-target/release/tokens-collector</string>
 			</dict>
 			<key>name</key>
 			<string>Release</string>
@@ -1018,9 +1043,9 @@
 				<key>PRODUCT_NAME</key>
 				<string>ToklyWidget</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>local.tokensmacos.app.widget</string>
+				<string>$(TOKLY_APP_BUNDLE_ID).widget</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Config/WidgetInfo.plist</string>
+				<string>$(TOKLY_WIDGET_INFO)</string>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/Widget.entitlements</string>
 				<key>CODE_SIGN_STYLE</key>
@@ -1039,6 +1064,10 @@
 					<string>@executable_path/../Frameworks</string>
 					<string>@executable_path/../../../../Frameworks</string>
 				</array>
+				<key>TOKLY_APP_BUNDLE_ID</key>
+				<string>local.tokensmacos.app</string>
+				<key>TOKLY_WIDGET_INFO</key>
+				<string>Config/WidgetInfo.plist</string>
 			</dict>
 			<key>name</key>
 			<string>Debug</string>
@@ -1054,9 +1083,9 @@
 				<key>PRODUCT_NAME</key>
 				<string>ToklyWidget</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>local.tokensmacos.app.widget</string>
+				<string>$(TOKLY_APP_BUNDLE_ID).widget</string>
 				<key>INFOPLIST_FILE</key>
-				<string>Config/WidgetInfo.plist</string>
+				<string>$(TOKLY_WIDGET_INFO)</string>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/Widget.entitlements</string>
 				<key>CODE_SIGN_STYLE</key>
@@ -1075,6 +1104,10 @@
 					<string>@executable_path/../Frameworks</string>
 					<string>@executable_path/../../../../Frameworks</string>
 				</array>
+				<key>TOKLY_APP_BUNDLE_ID</key>
+				<string>local.tokensmacos.app</string>
+				<key>TOKLY_WIDGET_INFO</key>
+				<string>Config/WidgetInfo.plist</string>
 			</dict>
 			<key>name</key>
 			<string>Release</string>
@@ -1111,6 +1144,78 @@
 			<string>Config/Version.xcconfig</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>30D3090FCC334A53B4B81B54</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>TokensApp/DirectoryAccess.swift</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>98FFE05B4E2343B295B7DAD4</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>fileRef</key>
+			<string>30D3090FCC334A53B4B81B54</string>
+		</dict>
+		<key>659F77C643F44B6F9265B4E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>Config/AppPrivacy/PrivacyInfo.xcprivacy</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>F27EEA72F0AE46B898E1B4BA</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>fileRef</key>
+			<string>659F77C643F44B6F9265B4E9</string>
+		</dict>
+		<key>CD035F915FAD4C71AC1292EF</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>Config/WidgetPrivacy/PrivacyInfo.xcprivacy</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>9782F223366E4EFE997059E5</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>fileRef</key>
+			<string>CD035F915FAD4C71AC1292EF</string>
+		</dict>
+		<key>733048B731CD42C187BA2304</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>distribution/ThirdPartyNotices.txt</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>3BF9E5C58376424A9C410B4E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>fileRef</key>
+			<string>733048B731CD42C187BA2304</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

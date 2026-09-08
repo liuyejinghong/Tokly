@@ -8,6 +8,7 @@ struct OverviewView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 header
+                if let error = state.directoryAccessError { Text(error).font(.caption).foregroundStyle(.orange) }
                 if let err = state.lastError {
                     ErrorBanner(message: err, snapshotLabel: state.lastSuccessAt.map { "上次成功 " + Format.updatedText($0) }, onRetry: { state.retry() })
                 }

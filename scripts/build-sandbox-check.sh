@@ -7,7 +7,7 @@ mkdir -p "$APP/Contents/MacOS"
 xcrun swiftc -parse-as-library -target arm64-apple-macos14.0 \
   -module-cache-path "$ROOT/.build/swift-sandbox-modules" \
   "$ROOT/validation/SandboxAccess/Sources/SandboxCheck.swift" -o "$APP/Contents/MacOS/ToklySandboxCheck"
-cp "$ROOT/.build/collector-target/release/tokens-collector" "$APP/Contents/MacOS/tokens-collector"
+cp "${TOKLY_PROBE_HELPER:-$ROOT/.build/collector-target/release/tokens-collector}" "$APP/Contents/MacOS/tokens-collector"
 python3 - "$APP" "$ROOT" <<'PY'
 import plistlib,sys
 from pathlib import Path

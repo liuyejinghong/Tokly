@@ -88,7 +88,7 @@ struct ContentView: View {
         }
         .frame(minWidth: 860, minHeight: 560)
         .onOpenURL { url in
-            if url.scheme == "tokensmacos", url.host == "today" {
+            if url.scheme == (Bundle.main.object(forInfoDictionaryKey: "ToklyURLScheme") as? String ?? "tokensmacos"), url.host == "today" {
                 state.openToday()
                 openWindow(id: "tokens-main")
                 NSApp.activate(ignoringOtherApps: true)

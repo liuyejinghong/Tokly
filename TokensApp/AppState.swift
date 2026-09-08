@@ -33,6 +33,54 @@ public final class AppState: ObservableObject {
     @Published public var lastSuccessAt: Date?
     @Published public var lastError: String?
     @Published public var storageError: String?
+    @Published public var directoryAccessError: String?
+    @Published private var directoryRevision = ""
+    private var directoryAccess: DirectoryAccessStore?
+    private var snapshotDirectoryRevision: String?
+    public var usesDirectoryGrants: Bool { Bundle.main.object(forInfoDictionaryKey: "ToklyUsesDirectoryGrants") as? Bool ?? false }
+    public var availableSources: [SourceRegistryEntry] {
+        SourceRegistry.orderedForOnboarding.filter { !usesDirectoryGrants || SourceDirectoryRole.clients.contains($0.id) }
+    }
+    public var missingDirectoryGrants: [String] {
+        usesDirectoryGrants ? enabledClients.filter { directoryAccess?.hasGrant(client: $0) != true }.sorted() : []
+    }
+    func hasDirectoryGrant(client: String) -> Bool { directoryAccess?.hasGrant(client: client) == true }
+    func directoryPath(role: String) -> String? { directoryAccess?.path(role: role) }
+    func authorizeDirectory(role: SourceDirectoryRole) {
+        let panel = NSOpenPanel()
+        panel.title = "选择 \(SourceRegistry.displayName(for: role.client)) \(role.label)"
+        panel.message = "只读访问所选日志目录。可重复选择，为会话和归档分别授权。"
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.canCreateDirectories = false
+        panel.showsHiddenFiles = true
+        panel.directoryURL = directoryAccess?.path(role: role.id).map { URL(fileURLWithPath: $0, isDirectory: true) }
+            ?? DirectoryAccessStore.userHome.appendingPathComponent(role.relativePath)
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        defer { url.stopAccessingSecurityScopedResource() }
+        do {
+            guard let directoryAccess else { throw DirectoryAccessError.invalidMapping }
+            try directoryAccess.authorize(role: role.id, url: url)
+            directoryConfigurationChanged()
+        } catch { directoryAccessError = error.localizedDescription }
+    }
+    func removeDirectory(role: String) {
+        do {
+            try directoryAccess?.remove(role: role)
+            directoryConfigurationChanged()
+        } catch { directoryAccessError = error.localizedDescription }
+    }
+    private func directoryConfigurationChanged() {
+        directoryRevision = directoryAccess?.revision ?? ""
+        directoryAccessError = nil
+        coalescer.noteSourcesChanged()
+        scanTask?.cancel()
+        snapshot = nil
+        snapshotDirectoryRevision = nil
+        lastSuccessAt = nil
+        do { try SnapshotStore.invalidateWidget() } catch { storageError = error.localizedDescription }
+        if hasOnboarded { requestScan() }
+    }
     @Published public var isScanning = false
     @Published public var hasPendingScan = false
 
@@ -110,6 +158,14 @@ public final class AppState: ObservableObject {
         }
         let ts = defaults.double(forKey: "lastPriceAttempt")
         self.lastPriceAttempt = ts > 0 ? Date(timeIntervalSince1970: ts) : nil
+        if usesDirectoryGrants {
+            enabledClients = enabledClients.intersection(SourceDirectoryRole.clients)
+            do {
+                let url = try SnapshotStore.privateDirectory().appendingPathComponent("directory-grants.json")
+                directoryAccess = try DirectoryAccessStore(file: url)
+                directoryRevision = directoryAccess?.revision ?? ""
+            } catch { directoryAccessError = error.localizedDescription }
+        }
         refreshLoginStatus()
         loadPersistedSnapshot()
         rescheduleTimer()
@@ -130,8 +186,9 @@ public final class AppState: ObservableObject {
 
     private func loadPersistedSnapshot() {
         do {
-            let snap = try SnapshotStore.loadPrivate()
+            let snap = try SnapshotStore.loadPrivate(sourceRevision: usesDirectoryGrants ? directoryAccess?.revision ?? "unavailable" : nil)
             snapshot = snap
+            snapshotDirectoryRevision = directoryAccess?.revision
             lastSuccessAt = snap.generatedAt
             if !configMatches(snap) {
                 do {
@@ -142,6 +199,12 @@ public final class AppState: ObservableObject {
             }
         } catch {
             snapshot = nil
+            snapshotDirectoryRevision = nil
+            lastSuccessAt = nil
+            if usesDirectoryGrants {
+                do { try SnapshotStore.invalidateWidget() }
+                catch { storageError = error.localizedDescription }
+            }
         }
     }
 
@@ -156,6 +219,7 @@ public final class AppState: ObservableObject {
     // MARK: - Config-scoped display
 
     public var displayValid: Bool {
+        if usesDirectoryGrants && snapshotDirectoryRevision != directoryAccess?.revision { return false }
         guard let snap = snapshot else { return true }
         return configMatches(snap)
     }
@@ -254,6 +318,10 @@ public final class AppState: ObservableObject {
 
     public func requestScan(userInitiated: Bool = false) {
         guard hasOnboarded, !enabledClients.isEmpty, !isQuitting else { return }
+        guard missingDirectoryGrants.isEmpty else {
+            directoryAccessError = "请先授权：" + missingDirectoryGrants.map(SourceRegistry.displayName).joined(separator: "、")
+            return
+        }
         switch coalescer.requestScan() {
         case .start:
             startScan()
@@ -307,10 +375,23 @@ public final class AppState: ObservableObject {
         let configDir: String
         do { configDir = try SnapshotStore.configDirectory().path } catch { return }
         let requestSet = Set(clients.map { $0.lowercased() })
+        var lease: SourceDirectoryLease?
+        defer { lease?.close() }
+        var scanHome = home
+        if usesDirectoryGrants {
+            do {
+                guard let directoryAccess else { throw DirectoryAccessError.invalidMapping }
+                lease = try directoryAccess.acquire(clients: requestSet, root: SnapshotStore.privateDirectory().appendingPathComponent("source-homes"))
+                scanHome = lease!.home.path
+            } catch {
+                setErrorIfCurrent(error.localizedDescription, tag: tag)
+                return
+            }
+        }
         let args: [String]
         do {
             args = try ScanScheduler.buildScanArguments(
-                home: home, configDir: configDir, timeZoneID: timeZoneID,
+                home: scanHome, configDir: configDir, timeZoneID: timeZoneID,
                 range: rangeReq, clients: clients)
         } catch {
             setErrorIfCurrent("参数错误：\(error.localizedDescription)", tag: tag)
@@ -334,7 +415,7 @@ public final class AppState: ObservableObject {
                 setErrorIfCurrent("返回与请求不一致，已保留上次成功统计", tag: tag)
                 return
             }
-            self.applySuccess(snap, tag: tag)
+            self.applySuccess(snap, tag: tag, sourceRevision: lease?.revision)
         } catch let e as RunnerError {
             switch e {
             case .cancelled: return
@@ -346,13 +427,14 @@ public final class AppState: ObservableObject {
     }
 
     @MainActor
-    private func applySuccess(_ snap: ScanSnapshot, tag: UInt64) {
+    private func applySuccess(_ snap: ScanSnapshot, tag: UInt64, sourceRevision: String?) {
         guard !coalescer.isStale(tag: tag) else { return }
         snapshot = snap
+        snapshotDirectoryRevision = sourceRevision
         lastSuccessAt = snap.generatedAt
         lastError = nil
         do {
-            try SnapshotStore.saveSuccess(snap, today: todayString)
+            try SnapshotStore.saveSuccess(snap, today: todayString, sourceRevision: snapshotDirectoryRevision)
             storageError = nil
         } catch {
             storageError = error.localizedDescription
@@ -406,7 +488,7 @@ public final class AppState: ObservableObject {
     }
 
     public func completeOnboarding() {
-        guard !enabledClients.isEmpty else { return }
+        guard !enabledClients.isEmpty, missingDirectoryGrants.isEmpty else { return }
         hasOnboarded = true
         openToday()
         requestScan(userInitiated: true)
@@ -483,7 +565,7 @@ public final class AppState: ObservableObject {
     private func republishWidget() {
         guard let snap = visibleSnapshot else { return }
         do {
-            try SnapshotStore.saveSuccess(snap, today: todayString)
+            try SnapshotStore.saveSuccess(snap, today: todayString, sourceRevision: snapshotDirectoryRevision)
             storageError = nil
         } catch {
             storageError = error.localizedDescription

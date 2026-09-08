@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 — 开发中
+
+- 独立App Store沙盒测试构建，先验证Codex、Claude Code、OpenCode目录授权。
+- 只读security-scoped bookmarks、重启恢复、授权版本隔离及撤销后快照失效。
+- 商店采集器使用macOS系统SQLite，默认普通构建保留bundled SQLite。
+- 隐私API声明、第三方许可和首版免费上架资料草稿。
+- 未提交App Store；最终组合构建的重启回归和分发前检查尚未全部完成。
+
 ## 0.1.0 — 2026-09-08
 
 首次版本化的 Tokly 本机开发版，构建号 2。此前安装包反复使用 0.1 / build 1，没有正式版本标签。

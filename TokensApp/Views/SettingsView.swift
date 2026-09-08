@@ -101,6 +101,10 @@ struct SettingsView: View {
                 }
                 .font(.callout).foregroundStyle(.secondary)
 
+                if let notices = Bundle.main.url(forResource: "ThirdPartyNotices", withExtension: "txt") {
+                    Link("开源许可", destination: notices).font(.callout)
+                }
+
                 HStack {
                     Text("更新于 \(Format.updatedText(state.lastSuccessAt))")
                     Spacer()

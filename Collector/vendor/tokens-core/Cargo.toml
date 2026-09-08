@@ -10,6 +10,10 @@ description = "Core library for tokens - session parsing, scanning, aggregation,
 [lib]
 crate-type = ["rlib"]
 
+[features]
+default = ["bundled-sqlite"]
+bundled-sqlite = ["rusqlite/bundled"]
+
 [dependencies]
 rayon = { workspace = true }
 simd-json = { workspace = true }

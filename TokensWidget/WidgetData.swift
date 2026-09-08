@@ -41,7 +41,7 @@ public enum WidgetReader {
     public static let fileName = "widget-snapshot.json"
     public static let groupID = "team.tokensmacos.app"
     public static let groupDefaultsKey = "TokensAppGroupIdentifier"
-    public static let deepLink = "tokensmacos://today"
+    public static var deepLink: String { (Bundle.main.object(forInfoDictionaryKey: "ToklyURLScheme") as? String ?? "tokensmacos") + "://today" }
 
     /// `widget-snapshot.json` inside a resolved group container.
     public static func fileURL(in container: URL) -> URL {

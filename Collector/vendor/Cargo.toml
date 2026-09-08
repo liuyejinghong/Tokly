@@ -47,7 +47,7 @@ tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"
 dirs = "5"
 
 # SQLite database support (bundled for cross-compilation)
-rusqlite = { version = "0.32", features = ["bundled"] }
+rusqlite = { version = "0.32" }
 zstd = "0.13"
 
 # Lazy static initialization

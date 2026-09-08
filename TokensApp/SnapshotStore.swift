@@ -27,6 +27,11 @@ public enum SnapshotStoreError: Error, LocalizedError {
     }
 }
 
+private struct StoredDirectorySnapshot: Codable {
+    let revision: String
+    let snapshot: ScanSnapshot
+}
+
 public enum SnapshotStore {
     public static let privateFileName = "scan.json"
     public static let widgetFileName = "widget-snapshot.json"
@@ -75,7 +80,7 @@ public enum SnapshotStore {
     }
 
     /// Loads the last successful private snapshot, if any.
-    public static func loadPrivate() throws -> ScanSnapshot {
+    public static func loadPrivate(sourceRevision: String? = nil) throws -> ScanSnapshot {
         let url = try privateSnapshotURL()
         let data: Data
         do {
@@ -85,7 +90,7 @@ public enum SnapshotStore {
             throw error
         }
         do {
-            return try ScanSnapshot.decodeValidated(from: data)
+            return try decodePrivate(data, sourceRevision: sourceRevision)
         } catch {
             throw SnapshotStoreError.undecodable(error.localizedDescription)
         }
@@ -95,14 +100,28 @@ public enum SnapshotStore {
     /// publishes the trimmed Widget snapshot and asks the system to
     /// refresh timelines. Storage failures throw and are surfaced
     /// separately from scan failures; the previous artifact is retained.
-    public static func saveSuccess(_ snapshot: ScanSnapshot, today: String) throws {
+    public static func saveSuccess(_ snapshot: ScanSnapshot, today: String, sourceRevision: String? = nil) throws {
         do {
-            let data = try snapshot.encoded()
+            let data = try encodePrivate(snapshot, sourceRevision: sourceRevision)
             try data.write(to: try privateSnapshotURL(), options: .atomic)
         } catch {
             throw SnapshotStoreError.writeFailed(error.localizedDescription)
         }
         try publishWidget(from: snapshot, today: today)
+    }
+
+    static func decodePrivate(_ data: Data, sourceRevision: String?) throws -> ScanSnapshot {
+        guard let sourceRevision else { return try ScanSnapshot.decodeValidated(from: data) }
+        let stored = try JSONDecoder().decode(StoredDirectorySnapshot.self, from: data)
+        guard stored.revision == sourceRevision else { throw SnapshotStoreError.missingSnapshot }
+        return stored.snapshot
+    }
+
+    static func encodePrivate(_ snapshot: ScanSnapshot, sourceRevision: String?) throws -> Data {
+        if let sourceRevision {
+            return try JSONEncoder().encode(StoredDirectorySnapshot(revision: sourceRevision, snapshot: snapshot))
+        }
+        return try snapshot.encoded()
     }
 
     public static func publishWidget(from snapshot: ScanSnapshot, today: String) throws {

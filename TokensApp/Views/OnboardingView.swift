@@ -11,11 +11,14 @@ struct OnboardingView: View {
                 Text("选择本机数据来源，Token 与估算费用会汇总到一起。只读取本机已有记录，不同步账号数据。")
                     .foregroundStyle(.secondary)
                 VStack(spacing: 0) {
-                    ForEach(SourceRegistry.orderedForOnboarding) { entry in
+                    ForEach(state.availableSources) { entry in
                         HStack(spacing: 12) {
                             VStack(alignment: .leading) {
                                 Text(entry.displayName).font(.headline)
                                 Text(entry.pathHint).font(.caption2).foregroundStyle(.secondary)
+                                if state.usesDirectoryGrants && draft.contains(entry.id) {
+                                    SourceDirectoryControls(client: entry.id)
+                                }
                             }
                             Spacer()
                             Toggle("纳入统计", isOn: Binding(
@@ -28,6 +31,10 @@ struct OnboardingView: View {
                     }
                 }
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(nsColor: .separatorColor)))
+                if state.usesDirectoryGrants {
+                    Text("沙盒验证版目前接入 Codex、Claude Code、OpenCode。只统计已授权目录，重启后保留只读授权。").font(.caption).foregroundStyle(.secondary)
+                }
+                if let error = state.directoryAccessError { Text(error).foregroundStyle(.orange).font(.caption) }
                 HStack {
                     Text("本机读取，本机保存").font(.caption).foregroundStyle(.secondary)
                     Spacer()
@@ -36,7 +43,7 @@ struct OnboardingView: View {
                         state.completeOnboarding()
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(draft.isEmpty)
+                    .disabled(draft.isEmpty || (state.usesDirectoryGrants && draft.contains { !state.hasDirectoryGrant(client: $0) }))
                 }
             }
             .padding(32)
