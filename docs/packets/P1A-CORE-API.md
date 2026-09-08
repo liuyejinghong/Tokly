@@ -1,6 +1,6 @@
 # P1A · 本地采集核心接口
 
-状态：可执行。执行者：OpenCode Worker / Muse Spark 1.3 Contributor；Codex 验收。
+状态：已验收（2026-09-08），6项集成测试及Clippy通过。执行者：OpenCode Worker / Muse Spark 1.3 Contributor；Codex 验收。
 
 ## 目标
 

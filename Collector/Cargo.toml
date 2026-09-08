@@ -1,0 +1,14 @@
+[package]
+name = "tokens-collector"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokens-core = { path = "vendor/tokens-core" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+
+[dev-dependencies]
+tempfile = "3"
+serial_test = "3"

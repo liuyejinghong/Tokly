@@ -1,0 +1,17 @@
+{
+  "upstreamRevision": "75aba190695c9de5f2695d9baba6afd3c8cb63f8",
+  "acceptedOn": "2026-09-08",
+  "summary": "P1A: extract local collection API without parser or pricing changes; add isolated synthetic integration checks.",
+  "files": {
+    "tokens-core/src/lib.rs": {
+      "packet": "P1A",
+      "upstreamSha256": "f6a95c6aa1d11463932ff551f2c190d31b080d684fa1e07bab04fa0189009dde",
+      "sha256": "2f725f2f21b55c085017315ecad2af5e405f0f994694234a892f1d9ff5360586"
+    },
+    "tokens-core/tests/collector_api.rs": {
+      "packet": "P1A",
+      "upstreamSha256": null,
+      "sha256": "f2a0836b4d3e03babf891b441cc2d7161a71ee9aae70dcf6c88b197f45ff136b"
+    }
+  }
+}

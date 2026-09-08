@@ -2096,12 +2096,13 @@ fn merge_workbuddy_messages(
     merged
 }
 
-async fn generate_graph_with_loaded_pricing(
-    options: ReportOptions,
+/// Collect filtered usage messages using the existing parsers and caches.
+/// No prices are fetched; with `None`, source-provided costs are retained.
+/// The existing `today_only` behavior is preserved.
+pub fn collect_messages(
+    options: &ReportOptions,
     pricing: Option<&pricing::PricingService>,
-) -> Result<GraphResult, String> {
-    let start = Instant::now();
-
+) -> Result<Vec<UnifiedMessage>, String> {
     let home_dir = get_home_dir_string(&options.home_dir)?;
 
     let clients: Vec<String> = options.clients.clone().unwrap_or_else(|| {
@@ -2122,7 +2123,16 @@ async fn generate_graph_with_loaded_pricing(
         options.today_only,
     );
 
-    let filtered = filter_messages_for_report(all_messages, &options);
+    Ok(filter_messages_for_report(all_messages, options))
+}
+
+async fn generate_graph_with_loaded_pricing(
+    options: ReportOptions,
+    pricing: Option<&pricing::PricingService>,
+) -> Result<GraphResult, String> {
+    let start = Instant::now();
+
+    let filtered = collect_messages(&options, pricing)?;
 
     let intervals = sessionize::sessionize(&filtered, sessionize::DEFAULT_IDLE_GAP_MS);
     let time_metrics =
