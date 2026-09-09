@@ -1,5 +1,6 @@
 import Foundation
 import Darwin
+import SQLite3
 
 struct SourceDirectoryRole: Identifiable {
     let id: String
@@ -22,9 +23,11 @@ enum DirectoryAccessError: Error, LocalizedError {
     case missingGrant(String)
     case expiredGrant(String)
     case invalidMapping
+    case unreadableDatabase(String)
 
     var errorDescription: String? {
         switch self {
+        case .unreadableDatabase(let name): return "无法只读访问 \(name)，本次未更新统计。请启动 OpenCode 后重试。"
         case .unknownRole: return "此来源目录尚未支持"
         case .overlyBroadDirectory: return "请选择具体客户端的数据目录，不要选择磁盘根目录或整个用户目录"
         case .missingGrant(let name): return "请先授权 \(name) 的日志目录"
@@ -38,10 +41,13 @@ final class SourceDirectoryLease {
     let home: URL
     let revision: String
     private var urls: [URL]
-    init(home: URL, revision: String, urls: [URL]) {
-        self.home = home; self.revision = revision; self.urls = urls
+    private var databases: [OpaquePointer]
+    init(home: URL, revision: String, urls: [URL], databases: [OpaquePointer]) {
+        self.home = home; self.revision = revision; self.urls = urls; self.databases = databases
     }
     func close() {
+        databases.forEach { sqlite3_close($0) }
+        databases.removeAll()
         urls.forEach { $0.stopAccessingSecurityScopedResource() }
         urls.removeAll()
     }
@@ -125,6 +131,7 @@ final class DirectoryAccessStore {
         let home = root.appendingPathComponent(state.revision, isDirectory: true)
         try FileManager.default.createDirectory(at: home, withIntermediateDirectories: true)
         var active: [URL] = []
+        var databases: [OpaquePointer] = []
         do {
             for role in SourceDirectoryRole.all where clients.contains(role.client) {
                 guard let grant = state.grants[role.id] else { continue }
@@ -137,6 +144,14 @@ final class DirectoryAccessStore {
                     next.grants[role.id] = Grant(bookmark: try url.bookmarkData(options: [.withSecurityScope, .securityScopeAllowOnlyReadAccess], includingResourceValuesForKeys: nil, relativeTo: nil), displayPath: url.path)
                     try persist(next)
                 }
+                if role.client == "opencode" {
+                    for name in ["opencode.db", "opencode-next.db"] {
+                        let database = url.appendingPathComponent(name)
+                        if FileManager.default.fileExists(atPath: database.path) {
+                            databases.append(try Self.openReadableDatabase(database))
+                        }
+                    }
+                }
                 let link = home.appendingPathComponent(role.relativePath)
                 try FileManager.default.createDirectory(at: link.deletingLastPathComponent(), withIntermediateDirectories: true)
                 if let previous = try? FileManager.default.destinationOfSymbolicLink(atPath: link.path) {
@@ -147,10 +162,28 @@ final class DirectoryAccessStore {
                 }
                 try FileManager.default.createSymbolicLink(at: link, withDestinationURL: url)
             }
-            return SourceDirectoryLease(home: home, revision: state.revision, urls: active)
+            return SourceDirectoryLease(home: home, revision: state.revision, urls: active, databases: databases)
         } catch {
+            databases.forEach { sqlite3_close($0) }
             active.forEach { $0.stopAccessingSecurityScopedResource() }
             throw error
         }
     }
+
+    // Keep the read transaction alive through the helper scan so a writer's
+    // shutdown cannot remove WAL support files between the check and the read.
+    static func openReadableDatabase(_ url: URL) throws -> OpaquePointer {
+        var database: OpaquePointer?
+        let opened = sqlite3_open_v2(url.path, &database, SQLITE_OPEN_READONLY | SQLITE_OPEN_FULLMUTEX, nil)
+        guard opened == SQLITE_OK, let database else {
+            if let database { sqlite3_close(database) }
+            throw DirectoryAccessError.unreadableDatabase(url.lastPathComponent)
+        }
+        guard sqlite3_exec(database, "BEGIN; SELECT name FROM sqlite_master LIMIT 1;", nil, nil, nil) == SQLITE_OK else {
+            sqlite3_close(database)
+            throw DirectoryAccessError.unreadableDatabase(url.lastPathComponent)
+        }
+        return database
+    }
+
 }

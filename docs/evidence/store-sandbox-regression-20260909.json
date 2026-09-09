@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-09",
+  "version": "0.2.0",
+  "build": 4,
+  "environment": "macOS 26, Apple Silicon, Apple Development signed Store Check sandbox",
+  "data": "synthetic repository fixtures only",
+  "sourcePermissions": "three user-selected read-only directory bookmarks",
+  "checks": {
+    "grantCountBeforeRevocation": 3,
+    "liveWalBaselineTokens": 380,
+    "liveWalSandboxTokens": 380,
+    "restartFreshScanTokens": 380,
+    "restartRepromptRequired": false,
+    "closedWalOldBuildTokens": 280,
+    "closedWalGuardedBuild": "explicit error, previous 380 tokens and timestamp retained",
+    "readOnlyWriteRejected": true,
+    "corruptDatabaseRejected": true,
+    "readTransactionRetainsWalAfterWriterClose": true,
+    "revocationPrivateRevisionMismatch": true,
+    "revocationWidgetRemoved": true,
+    "stableWidgetStillPresent": true
+  },
+  "limits": [
+    "OpenCode closed database without WAL sidecars cannot refresh; scan preserves old result",
+    "synthetic fixtures do not cover every schema or concurrency pattern",
+    "macOS 14 runtime and App Store distribution not verified"
+  ]
+}

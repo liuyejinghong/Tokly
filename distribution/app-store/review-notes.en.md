@@ -14,3 +14,5 @@ To test without installing an AI client, create a plain-text `.jsonl` file in a 
 After quitting and reopening, the directory grant should remain. Removing it from Sources invalidates the displayed snapshot and stops subsequent reads. Original files are not deleted. Widgets only read an application-group summary and follow system refresh scheduling.
 
 Before submission: verify this example against the final archive; provide public support/privacy URLs; complete seller, privacy, export and distribution information. Do not submit the `local.tokensmacos.storecheck` development identity as the production app record.
+
+OpenCode limitation: when a WAL database has no auxiliary files after OpenCode exits, the sandbox cannot create them in the read-only source directory. Tokly stops that scan with an explicit error and keeps the last successful snapshot. Relaunch OpenCode and retry, or disable that source. This limitation must remain disclosed before submission.
